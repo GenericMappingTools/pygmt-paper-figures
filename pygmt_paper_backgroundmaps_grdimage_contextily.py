@@ -17,8 +17,7 @@ with fig.subplot(
     # Top left
     fig.basemap(region=region, projection="M?", panel=True)
     fig.coast(land="lightgray", water="lightblue", shorelines="1/0.5p,gray30")
-    with pygmt.config(MAP_SCALE_HEIGHT="10p"):
-        fig.basemap(map_scale="n0.86/0.1+c+w100k+f+l")
+    fig.basemap(map_scale="n0.86/0.1+c+w100k+f+l")
 
     # Top right
     fig.basemap(region=region, projection="M?", panel=True)
