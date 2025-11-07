@@ -18,7 +18,7 @@ fig.text(
     text=["GMT low-level", "library", "GMT C API", "GMT modules"] ,
     font="8p,1,white",
 )
-fig.logo(position=f"g{x1}/7+jMC+w3c")
+fig.logo(position=f"g{x1}/7+jMC+w2c")
 
 # Add the Python part.
 fig.plot(x=[7.5, 15.5, 15.5, 7.5], y=[0, 0, 6, 6], pen="1p,black", close=True)
@@ -50,7 +50,7 @@ fig.text(
 )
 fig.image(
     "https://www.python.org/static/community_logos/python-logo-master-v3-TM.png",
-    position="g12/7+jMC+w5c"
+    position="g12/7+jMC+w4.5c"
 )
 
 # Add the PyGMT part.
@@ -62,6 +62,7 @@ fig.plot(
 )
 
 fig.show()
+fig.savefig("Fig2.png")
 
 # %%
 
