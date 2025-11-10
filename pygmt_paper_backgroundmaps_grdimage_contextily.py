@@ -20,15 +20,12 @@ with fig.subplot(
     fig.basemap(map_scale="n0.86/0.1+c+w100k+f+l")
 
     # Top right
-    grd_geoid = pygmt.datasets.load_earth_geoid(resolution="03m", region=region)
+    grd_relief = pygmt.datasets.load_earth_relief(resolution="03m", region=region)
     fig.basemap(region=region, projection="M?", panel=1)
-    fig.grdimage(grid=grd_geoid, cmap="SCM/lajolla")
-    fig.grdcontour(grid=grd_geoid)
-    fig.colorbar(frame=["x+lheight", "y+lm"], position="JLM")
-    fig.coast(shorelines="1/0.5p,white", resolution="high")
+    fig.grdimage(grid=grd_relief, cmap="SCM/oleron", shading=True)
+    fig.grdcontour(grid=grd_relief, levels=500)
 
     # Bottom left
-    grd_relief = pygmt.datasets.load_earth_relief(resolution="03m", region=region)
     fig.basemap(region=region, projection="M?", perspective=[-150, 25], panel=2)
     fig.grdview(
         grid=grd_relief,
@@ -38,7 +35,9 @@ with fig.subplot(
         plane="-1500+ggrey",
         perspective=True,
     )
-    fig.colorbar(frame=["x+lsurface elevation", "y+lm"], position="jTC+h+ml")
+    fig.colorbar(
+        frame=["x+lElevation", "y+lm"], position="JTC+o1c/3c", perspective=True
+    )
 
     # Bottom right
     fig.tilemap(region=region, projection="M?", zoom=7, panel=3)
