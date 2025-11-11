@@ -8,7 +8,7 @@ with fig.subplot(
     ncols=2,
     subsize=("12c", "8.5c"),
     autolabel="(a)+o0.15c/0.3c+gwhite@30",  # maybe +v
-    margins=("0.5c", "0.2c"),
+    margins=("0.2c", "0.2c"),
     sharex="b",
     sharey="l",
     frame="WSrt",
@@ -20,10 +20,10 @@ with fig.subplot(
     fig.basemap(map_scale="n0.86/0.1+c+w100k+f+l")
 
     # Top right
-    grd_relief = pygmt.datasets.load_earth_relief(resolution="30s", region=region)
+    grd_relief = pygmt.datasets.load_earth_relief(resolution="01m", region=region)
     fig.basemap(region=region, projection="M?", panel=1)
     fig.grdimage(grid=grd_relief, cmap="SCM/oleron")
-    fig.grdcontour(grid=grd_relief, levels=500, pen="0.5p,white", annotation=500)
+    fig.grdcontour(grid=grd_relief, levels=500, pen="0.1p,white", annotation=500)
     fig.colorbar(frame=["x+lElevation", "y+lm"], position="JRM")
 
     # Bottom left
@@ -35,7 +35,7 @@ with fig.subplot(
         grid=grd_relief,
         cmap="SCM/oleron",
         surftype="s",
-        # shading=True,
+        shading=True,
         zsize="1.5c",
         plane="-1500+ggrey",
         perspective=True,
