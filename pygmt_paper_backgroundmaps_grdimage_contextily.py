@@ -7,8 +7,8 @@ with fig.subplot(
     nrows=2,
     ncols=2,
     subsize=("12c", "8.5c"),
-    autolabel="(a)+o0.15c/0.3c+gwhite@30",
-    margins=("1.5c", "0.2c"),
+    autolabel="(a)+o0.15c/0.3c+gwhite@30",  # maybe +v
+    margins=("0.5c", "0.2c"),
     sharex="b",
     sharey="l",
     frame="WSrt",
@@ -26,7 +26,10 @@ with fig.subplot(
     fig.grdcontour(grid=grd_relief, levels=500)
 
     # Bottom left
-    fig.basemap(region=region, projection="M?", perspective=[-150, 25], panel=2)
+    fig.tilemap(region=region, projection="M?", zoom=7, panel=2)
+
+    # Bottom right
+    fig.basemap(region=region, projection="M?", perspective=[-150, 25], panel=3)
     fig.grdview(
         grid=grd_relief,
         cmap="SCM/oleron",
@@ -38,8 +41,5 @@ with fig.subplot(
     fig.colorbar(
         frame=["x+lElevation", "y+lm"], position="JTC+o1c/3c", perspective=True
     )
-
-    # Bottom right
-    fig.tilemap(region=region, projection="M?", zoom=7, panel=3)
 
 fig.show()
