@@ -8,7 +8,7 @@ with fig.subplot(
     ncols=2,
     subsize=("12c", "8.5c"),
     autolabel="(a)+o0.15c/0.3c+gwhite@30",  # maybe +v
-    margins=("0.2c", "0.2c"),
+    margins=("0.3c", "0.2c"),
     sharex="b",
     sharey="l",
     frame="WSrt",
