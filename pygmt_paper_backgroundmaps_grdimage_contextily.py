@@ -20,10 +20,10 @@ with fig.subplot(
     fig.basemap(map_scale="n0.86/0.1+c+w100k+f+l")
 
     # Top right
-    grd_relief = pygmt.datasets.load_earth_relief(resolution="30s", region=region)
+    grd_relief = pygmt.datasets.load_earth_relief(resolution="03m", region=region)
     fig.basemap(region=region, projection="M?", panel=1)
     fig.grdimage(grid=grd_relief, cmap="SCM/oleron", shading=True)
-    fig.grdcontour(grid=grd_relief, levels=500)
+    fig.grdcontour(grid=grd_relief, levels=500, pen="0.7p,white")
 
     # Bottom left
     fig.tilemap(region=region, projection="M?", zoom=7, panel=2)
