@@ -29,9 +29,9 @@ for x, y in [
     ([10, 12], [1, 3]),
     ([12, 12], [3, 5]),
 ]:
-    fig.plot(x=x, y=y, pen="1p,black")
-fig.plot(x=[10, 9, 12], y=[1, 3, 3], style="R2.0c/1c/3p", fill=blue, pen="0.5p,black")
-fig.plot(x=14, y=1, style="R2.0c/1c/3p", fill=blue, pen="0.5p,black,-")
+    fig.plot(x=x, y=y, pen="1p")
+fig.plot(x=[10, 9, 12], y=[1, 3, 3], style="R2c/1c/3p", fill=blue, pen="0.5p")
+fig.plot(x=14, y=1, style="R2c/1c/3p", fill=blue, pen="0.5p,dashed")
 fig.text(
     x=[10, 9, 12, 14],
     y=[1, 3, 3, 1],
