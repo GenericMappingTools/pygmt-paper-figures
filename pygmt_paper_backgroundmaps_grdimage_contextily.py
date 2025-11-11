@@ -23,7 +23,9 @@ with fig.subplot(
     grd_relief = pygmt.datasets.load_earth_relief(resolution="01m", region=region)
     fig.basemap(region=region, projection="M?", panel=1)
     fig.grdimage(grid=grd_relief, cmap="SCM/oleron")
-    fig.grdcontour(grid=grd_relief, levels=500, pen="0.1p,white", annotation=500)
+    fig.grdcontour(
+        grid=grd_relief, levels=500, pen="0.1p,white", annotation="500+ggray30"
+    )
     fig.colorbar(frame=["x+lElevation", "y+lm"], position="JRM")
 
     # Bottom left
@@ -40,8 +42,5 @@ with fig.subplot(
         plane="-1500+ggrey",
         perspective=True,
     )
-    # fig.colorbar(
-    #     frame=["x+lElevation", "y+lm"], position="JTC+o1c/3c", perspective=True
-    # )
 
 fig.show()
