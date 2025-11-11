@@ -7,10 +7,10 @@ fig = pygmt.Figure()
 fig.basemap(region=[-1, 16, -1, 8], projection="x1c", frame="+n")
 
 # Add the GMT part.
-fig.plot(x=[-0.5, 2.5, 2.5, -0.5], y=[0, 0, 6, 6], pen="1p,black", close=True)
-fig.vlines(x=1, ymin=1, ymax=3, pen="1p,black")
-fig.vlines(x=1, ymin=3, ymax=5, pen="1p,black")
-fig.plot(x=[1.0] * 3, y=[1, 3, 5], style="R2.1c/1c/3p", fill=red, pen="0.5p,black")
+fig.plot(x=[-0.5, 2.5, 2.5, -0.5], y=[0, 0, 6, 6], pen="1p", close=True)
+fig.vlines(x=1, ymin=1, ymax=3, pen="1p")
+fig.vlines(x=1, ymin=3, ymax=5, pen="1p")
+fig.plot(x=[1.0] * 3, y=[1, 3, 5], style="R2.1c/1c/3p", fill=red, pen="0.5p")
 fig.text(
     x=[1.0] * 4,
     y=[1.25, 0.75, 3, 5],
