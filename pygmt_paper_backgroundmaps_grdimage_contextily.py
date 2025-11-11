@@ -24,7 +24,7 @@ with fig.subplot(
     fig.basemap(region=region, projection="M?", panel=1)
     fig.grdimage(grid=grd_relief, cmap="SCM/oleron")
     fig.grdcontour(
-        grid=grd_relief, levels=500, pen="0.1p,white", annotation="500+ggray30"
+        grid=grd_relief, levels=500, pen="0.3p,white", annotation="500+ggray30"
     )
     fig.colorbar(frame=["x+lElevation", "y+lm"], position="JRM")
 
@@ -43,4 +43,4 @@ with fig.subplot(
         perspective=True,
     )
 
-fig.show()
+fig.show() #method="external")
