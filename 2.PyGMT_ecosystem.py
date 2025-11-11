@@ -20,7 +20,7 @@ fig.text(
 fig.logo(position="g1/7+jMC+w2c")
 
 # Add the Python part.
-fig.plot(x=[7.5, 15.5, 15.5, 7.5], y=[0, 0, 6, 6], pen="1p,black", close=True)
+fig.plot(x=[7.5, 15.5, 15.5, 7.5], y=[0, 0, 6, 6], pen="1p", close=True)
 for x, y in [
     ([10, 14], [1, 1]),
     ([10, 9], [1, 3]),
