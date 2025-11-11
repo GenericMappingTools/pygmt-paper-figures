@@ -44,7 +44,7 @@ fig.text(
     text=["rioxarray", "contextily", "GeoPandas"],
     font="8p,1,white",
     fill=blue,
-    pen="0.5p,black,-",
+    pen="0.5p,dashed",
     clearance="0.1c/0.1c+tO",
 )
 fig.image(
