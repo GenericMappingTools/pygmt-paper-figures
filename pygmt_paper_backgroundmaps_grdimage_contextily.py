@@ -29,7 +29,7 @@ with fig.subplot(
     fig.tilemap(region=region, projection="M?", zoom=7, panel=2)
 
     # Bottom right
-    fig.basemap(region=region, projection="M?", perspective=[-150, 25], panel=3)
+    fig.basemap(region=region, projection="M?", perspective=(-150, 25), panel=3)
     fig.grdview(
         grid=grd_relief,
         cmap="SCM/oleron",
