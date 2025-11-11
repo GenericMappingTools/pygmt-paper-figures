@@ -1,4 +1,3 @@
-# %%
 import pygmt
 
 red, blue = "238/86/52", "#4B8BBE"  # GMT red and Python blue
@@ -7,10 +6,10 @@ fig = pygmt.Figure()
 fig.basemap(region=[-1, 16, -1, 8], projection="x1c", frame="+n")
 
 # Add the GMT part.
-fig.plot(x=[-0.5, 2.5, 2.5, -0.5], y=[0, 0, 6, 6], pen="1p", close=True)
-fig.vlines(x=1, ymin=1, ymax=3, pen="1p")
-fig.vlines(x=1, ymin=3, ymax=5, pen="1p")
-fig.plot(x=[1.0] * 3, y=[1, 3, 5], style="R2.1c/1c/3p", fill=red, pen="0.5p")
+fig.plot(x=[-0.5, 2.5, 2.5, -0.5], y=[0, 0, 6, 6], pen="1p,black", close=True)
+fig.vlines(x=1, ymin=1, ymax=3, pen="1p,black")
+fig.vlines(x=1, ymin=3, ymax=5, pen="1p,black")
+fig.plot(x=[1.0] * 3, y=[1, 3, 5], style="R2.1c/1c/3p", fill=red, pen="0.5p,black")
 fig.text(
     x=[1.0] * 4,
     y=[1.25, 0.75, 3, 5],
@@ -20,7 +19,7 @@ fig.text(
 fig.logo(position="g1/7+jMC+w2c")
 
 # Add the Python part.
-fig.plot(x=[7.5, 15.5, 15.5, 7.5], y=[0, 0, 6, 6], pen="1p", close=True)
+fig.plot(x=[7.5, 15.5, 15.5, 7.5], y=[0, 0, 6, 6], pen="1p,black", close=True)
 for x, y in [
     ([10, 14], [1, 1]),
     ([10, 9], [1, 3]),
@@ -29,9 +28,9 @@ for x, y in [
     ([10, 12], [1, 3]),
     ([12, 12], [3, 5]),
 ]:
-    fig.plot(x=x, y=y, pen="1p")
-fig.plot(x=[10, 9, 12], y=[1, 3, 3], style="R2c/1c/3p", fill=blue, pen="0.5p")
-fig.plot(x=14, y=1, style="R2c/1c/3p", fill=blue, pen="0.5p,dashed")
+    fig.plot(x=x, y=y, pen="1p,black")
+fig.plot(x=[10, 9, 12], y=[1, 3, 3], style="R2.0c/1c/3p", fill=blue, pen="0.5p,black")
+fig.plot(x=14, y=1, style="R2.0c/1c/3p", fill=blue, pen="0.5p,black,-")
 fig.text(
     x=[10, 9, 12, 14],
     y=[1, 3, 3, 1],
@@ -44,7 +43,7 @@ fig.text(
     text=["rioxarray", "contextily", "GeoPandas"],
     font="8p,1,white",
     fill=blue,
-    pen="0.5p,dashed",
+    pen="0.5p,black,-",
     clearance="0.1c/0.1c+tO",
 )
 fig.image(
@@ -62,8 +61,3 @@ fig.plot(
 
 fig.show()
 fig.savefig("Fig2.PyGMT_ecosystem.png")
-
-# %%
-
-
-
