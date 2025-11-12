@@ -33,3 +33,4 @@ fig.plot(
 # )
 
 fig.show()
+fig.savefig("Fig4_PyGMT_pandas.png")
