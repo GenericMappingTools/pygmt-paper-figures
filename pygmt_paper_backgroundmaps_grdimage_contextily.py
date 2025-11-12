@@ -40,3 +40,4 @@ with fig.subplot(
     )
 
 fig.show()
+fig.savefig("Fig3_PyGMT_backgrounds.png")
