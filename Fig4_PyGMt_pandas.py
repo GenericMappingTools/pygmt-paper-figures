@@ -19,18 +19,18 @@ fig.plot(
     pen="gray10",
 )
 
-# fig.shift_origin(xshift="w+1c")
+fig.shift_origin(xshift="w+1c")
 
-# fig.histogram(
-#     region=[3, 8, 0, 0],
-#     projection="X12c",
-#     frame=["lStE", "xa1af0.5+lmoment magnitude", "yaf+lCounts"],
-#     data=df_eqs.magnitude,
-#     series=0.25,
-#     fill="darkgray",
-#     pen="1p,lightgray,solid",
-#     histtype=0,
-# )
+fig.histogram(
+    region=[3, 8, 0, 0],
+    projection="X12c",
+    frame=["lStE", "xa1af0.5+lmoment magnitude", "yaf+lCounts"],
+    data=df_eqs.magnitude,
+    series=0.25,
+    fill="darkgray",
+    pen="1p,lightgray,solid",
+    histtype=0,
+)
 
 fig.show()
 fig.savefig("Fig4_PyGMT_pandas.png")
