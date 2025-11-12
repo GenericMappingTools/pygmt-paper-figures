@@ -39,4 +39,4 @@ with fig.subplot(
         perspective=True,
     )
 
-fig.show() #method="external")
+fig.show()
