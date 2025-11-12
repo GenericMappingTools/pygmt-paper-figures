@@ -54,3 +54,4 @@ for block_value in ["counts", "mean bathymetry in meters"]:
     fig.shift_origin(xshift="w+2c")
 
 fig.show()
+fig.savefig(fname="Fig6_PyGMT_dataprocessing.png")
