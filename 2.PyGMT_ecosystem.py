@@ -48,7 +48,7 @@ fig.text(
 )
 fig.image(
     "https://www.python.org/static/community_logos/python-logo-master-v3-TM.png",
-    position="g12/7+jMC+w4.5c"
+    position="g11.5/7+jMC+w4.5c"  # 7.5 + (15.5 - 7.5)
 )
 
 # Add the PyGMT part.
