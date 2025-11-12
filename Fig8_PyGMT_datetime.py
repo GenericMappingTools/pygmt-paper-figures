@@ -29,3 +29,4 @@ fig.legend(
 )
 
 fig.show()
+fig.savefig(fname="Fig8_PyGMT_datetime.png")
