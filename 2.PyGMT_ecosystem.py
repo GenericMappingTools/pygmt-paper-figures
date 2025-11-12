@@ -60,4 +60,4 @@ fig.plot(
 )
 
 fig.show()
-fig.savefig("Fig2.PyGMT_ecosystem.png")
+fig.savefig("Fig2_PyGMT_ecosystem.png")
