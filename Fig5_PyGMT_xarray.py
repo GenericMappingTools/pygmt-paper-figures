@@ -11,3 +11,5 @@ fig.grdimage(
 )
 fig.colorbar(frame=["xa5+lsea surface temperature", "y+l@.C"])
 fig.show()
+
+fig.savefig(fname="Fig5_PyGMT_xarray.png")
