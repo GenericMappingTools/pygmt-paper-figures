@@ -34,6 +34,7 @@ with fig.subplot(
         grid=grd_relief,
         cmap="SCM/oleron",
         surftype="s",
+        shading=True,
         zsize="1.5c",
         plane="-1500+ggrey",
         perspective=True,
