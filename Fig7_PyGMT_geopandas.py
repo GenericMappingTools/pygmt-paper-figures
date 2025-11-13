@@ -21,3 +21,89 @@ fig.plot(
 
 fig.show()
 fig.savefig(fname="Fig7_PyGMT_geopandas.png")
+
+
+# %%
+import pandas as pd
+import pygmt
+
+
+# %%
+# -----------------------------------------------------------------------------
+# General stuff
+# -----------------------------------------------------------------------------
+color_neg = "darkorange"
+color_pos = "darkgreen"
+color_null = "white"
+
+lon_min = -26
+lon_max = 52
+lat_min = 33
+lat_max = 72
+
+region = [lon_min, lon_max, lat_min, lat_max]
+projection="M10c"
+
+
+# %%
+# -----------------------------------------------------------------------------
+# Load data
+# -----------------------------------------------------------------------------
+data_file = "eu_population.txt"
+df_pop_raw = pd.read_csv(f"{data_file}", sep="\t")
+
+sort_by = "change_percent"  # "land", "change_percent"
+df_pop = df_pop_raw.sort_values(sort_by, ignore_index=True)
+
+abs_max_change = abs(max(df_pop["change_percent"]))
+
+
+# %%
+# -----------------------------------------------------------------------------
+# Create map
+# -----------------------------------------------------------------------------
+fig = pygmt.Figure()
+fig.basemap(region=region, projection=projection, frame=True)
+
+for i_land in range(len(df_pop)):
+
+    land = df_pop["land"][i_land]
+    change = df_pop["change_percent"][i_land]
+
+    # Creat simple diverging colormap via semi-transparency
+    color_sign = color_pos
+    if change < 0: color_sign = color_neg
+    elif change == 0: color_sing = color_null
+    color_trans = f"{color_sign}@{abs_max_change - abs(change)}"
+
+    # Make a choropleth map using dcw
+    fig.coast(dcw=f"{land}+g{color_trans}")
+
+    # Plot dummy data points outside of study area for legend
+    leg_head = " "
+    if i_land == 0:
+        leg_head = "+N2+HPopulation change 1990 - 2023+f11p"
+    fig.plot(
+        x=0,
+        y=0,
+        style="s0.4c",
+        fill=color_trans,
+        pen="0.1p,gray30",
+        label=f"{land}: {change} %{leg_head}",
+    )
+
+    print(land)
+    # fig.show()
+
+# Add shorelines and political boundaries
+fig.coast(shorelines="1/0.1p,gray60", borders="1/0.3p,white")
+
+# Add legend
+with pygmt.config(FONT="9p"):
+    fig.legend(position="JRM+jLM+o0.2c/0c+w7.5c")
+
+# Show and save figure
+fig.show()
+fig_name = f"dcw_choropleth_sorted_by_{sort_by}"
+for ext in ["png"]: #, "pdf", "eps"]:
+    fig.savefig(fname=f"{fig_name}.{ext}")
