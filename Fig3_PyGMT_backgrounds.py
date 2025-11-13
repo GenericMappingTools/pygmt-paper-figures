@@ -26,7 +26,7 @@ with fig.subplot(
     grd_relief = pygmt.datasets.load_earth_relief(resolution="01m", region=region)
     fig.basemap(region=region, projection="M?", panel=2)
     fig.grdimage(grid=grd_relief, cmap="SCM/oleron", shading=True)
-    fig.colorbar(frame=["x+lElevation", "y+lm"], position="JRM")
+    fig.colorbar(frame=["x+lElevation", "y+lm"], position="JRM", shading=True)
 
     # Bottom right
     fig.basemap(region=region, projection="M?", perspective=(-150, 25), panel=3)
