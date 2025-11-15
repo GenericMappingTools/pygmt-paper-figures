@@ -1,14 +1,45 @@
 import pygmt
+import pandas as pd
 
+df_eqs = pygmt.datasets.load_sample_data(name="japan_quakes")
+projection_main = "M15c"
+region_main = "131/152/33/51"  # string needed for GMT
+
+# -----------------------------------------------------------------------------
+# Determine dimension of maps
+# -> https://docs.generic-mapping-tools.org/dev/mapproject.html#w
+# -> https://www.pygmt.org/dev/api/generated/pygmt.clib.Session.html
+# -----------------------------------------------------------------------------
+# Get height of main map
+file_dim_main = "map_dim_main"
+with pygmt.clib.Session() as session:
+    session.call_module(
+        module="mapproject",
+        args=[
+            f"-J{projection_main}", f"-R{region_main}", "-W", f"->{file_dim_main}.txt"
+        ],
+    )
+map_dim_main = pd.read_csv(
+    f"{file_dim_main}.txt", sep="\t", names=["width", "height"]
+)
+map_height = map_dim_main["height"][0]
+
+# Determine height of the two histograms
+# Have a vertical space between them of 2 centimeters
+# Have the same hight for both histograms
+histo_height = (map_height - 2) / 2
+# -----------------------------------------------------------------------------
+
+# Create Figure
 fig = pygmt.Figure()
 
-fig.basemap(region=[131, 152, 33, 51], projection="M10c", frame=True)
+# Map showing epicenters with color- and size-coding for hypocentral depth or
+# moment magnitude
+fig.basemap(region=region_main, projection=projection_main, frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 pygmt.makecpt(cmap="SCM/navia", series=[0, 500], reverse=True)
-fig.colorbar(frame=["xa100f50+lhypocentral depth", "y+lkm"], position="+ef0.2c")
-
-df_eqs = pygmt.datasets.load_sample_data(name="japan_quakes")
+fig.colorbar(frame=["xa100f50+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
@@ -19,15 +50,29 @@ fig.plot(
     pen="gray10",
 )
 
+# Histogram for moment magnitude at the right bottom
 fig.shift_origin(xshift="w+1c")
-
 fig.histogram(
-    region=[3, 8, 0, 0],
-    projection="X12c",
-    frame=["lStE", "xa1af0.5+lmoment magnitude", "yaf+lCounts"],
+    region=[3.9, 7.1, 0, 0],
+    projection=f"X10c/{histo_height}c",
+    frame=["lStE", "xa1af0.5+lMoment magnitude", "yaf+lCounts"],
     data=df_eqs.magnitude,
-    series=0.25,
+    series=0.1,
     fill="darkgray",
+    pen="1p,lightgray,solid",
+    histtype=0,
+)
+
+# Histogram for hyocentral depth at the right top
+fig.shift_origin(yshift="h+2c")
+fig.histogram(
+    region=[0, 600, 0, 0],
+    projection=f"X10c/{histo_height}c",
+    frame=["lStE", "xa1af0.5+lHyocentral depth / km", "yaf+lCounts"],
+    data=df_eqs.depth_km,
+    series=20,
+    # fill="darkgray",
+    cmap=True,
     pen="1p,lightgray,solid",
     histtype=0,
 )
