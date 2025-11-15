@@ -33,11 +33,19 @@ histo_height = (map_height - 2) / 2
 # Create Figure
 fig = pygmt.Figure()
 
-# Map showing epicenters with color- and size-coding for hypocentral depth or
-# moment magnitude
+# Main map
 fig.basemap(region=region_main, projection=projection_main, frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
+# Inset showing study area globaly
+with fig.inset(position="jTL+w4.5c+o0.15c", margin=0.05):
+    fig.basemap(region="g", projection="G140/30/?", frame=0)
+    # Mark Japan via dcw or plot rectangle of study area via r+s
+    fig.coast(land="bisque", water="lightblue", dcw="JP+gtomato")
+    fig.basemap(frame="g30")
+
+# Plot epicenters with color- and size-coding for hypocentral depth or moment
+# magnitude
 pygmt.makecpt(cmap="SCM/navia", series=[0, 500], reverse=True)
 fig.colorbar(frame=["xa100f50+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
