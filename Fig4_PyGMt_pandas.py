@@ -3,14 +3,12 @@ import pygmt
 import pandas as pd
 
 df_eqs = pygmt.datasets.load_sample_data(name="japan_quakes")
-projection_main = "M15c"
-region_main = "131/152/33/51"  # string needed for GMT
 
 # Create Figure
 fig = pygmt.Figure()
 
 # Main map
-fig.basemap(region=region_main, projection=projection_main, frame=True)
+fig.basemap(region=[131, 152, 33, 51], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
@@ -27,9 +25,10 @@ fig.plot(
 )
 
 # Add legend for size-coding
-legend = io.StringIO("\n".join(f"S 0.4 c {0.02*2**m:.2f} - 1p 1.0 Mw {m}" for m in [3.0, 4.0, 5.0]))
+legend = io.StringIO(
+    "\n".join(f"S 0.4 c {0.02*2**m:.2f} - 1p 1.0 Mw {m}" for m in [3.0, 4.0, 5.0])
+)
 fig.legend(legend, position="jBR+o0.2c/0.2c+l2.0", box=True)
-
 
 # Add beachball for M 9.1 - 2011 Great Tohoku Earthquake, Japan
 # https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30/moment-tensor
@@ -45,7 +44,21 @@ fig.meca(
     pen="0.5p,gray30,solid",  # TODO maybe add offset
 )
 
-
+with fig.inset(
+    position="jTL+w5.5/3.5c+o0.1c",
+    margin=(1.0, 0.2, 1.0, 0.2),
+    box=pygmt.params.Box(fill="bisque"),
+):
+    fig.histogram(
+        # region=[3.9, 7.1, 0, 0],
+        projection="X?c/?c",
+        frame=["WSrt", "xa1af0.5+lMoment magnitude", "yaf+lCounts"],
+        data=df_eqs.magnitude,
+        series=0.1,
+        fill="darkgray",
+        pen="1p,lightgray,solid",
+        histtype=0,
+    )
 
 fig.show()
 fig.savefig("Fig4_PyGMT_pandas.png")
