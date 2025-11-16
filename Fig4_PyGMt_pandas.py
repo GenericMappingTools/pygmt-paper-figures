@@ -54,7 +54,7 @@ fig.plot(
     size=0.02 * 2**df_eqs.magnitude,
     fill=df_eqs.depth_km,
     cmap=True,
-    style="cc",
+    style="c",
     pen="gray10",
 )
 
