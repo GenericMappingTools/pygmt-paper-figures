@@ -35,6 +35,8 @@ fig = pygmt.Figure()
 
 # Main map
 fig.basemap(region=region_main, projection=projection_main, frame=True)
+# pygmt.makecpt(cmap="oleron", series=[-8000, 2500])
+# fig.grdimage("@earth_relief_30s_g", region=region_main, cmap=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 # Inset showing study area globaly
@@ -55,6 +57,20 @@ fig.plot(
     cmap=True,
     style="c",
     pen="gray10",
+)
+
+# Add beachball for M 9.1 - 2011 Great Tohoku Earthquake, Japan
+# https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30/moment-tensor
+focal_mechanism = {"strike": 193, "dip": 9, "rake": 78, "magnitude": 9.1}
+fig.meca(
+    spec=focal_mechanism,
+    scale="1c",  # TODO Have the same scaling for scatter plot and meca
+    longitude=142.373,
+    latitude=38.297,
+    depth=29,
+    compressionfill="tomato",
+    extensionfill="cornsilk",
+    pen="0.5p,gray30,solid",  # TODO maybe add offset
 )
 
 # Histogram for moment magnitude at the right bottom
