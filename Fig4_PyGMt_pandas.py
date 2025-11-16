@@ -38,7 +38,7 @@ fig.basemap(region=region_main, projection=projection_main, frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 # Inset showing study area globaly
-with fig.inset(position="jTL+w4.5c+o0.15c", margin=0.05):
+with fig.inset(position="jTL+w5c+o0.1c", margin=0.05):
     fig.basemap(region="g", projection="G140/30/?", frame=0)
     # Mark Japan via dcw or plot rectangle of study area via r+s
     fig.coast(land="bisque", water="lightblue", dcw="JP+gtomato")
