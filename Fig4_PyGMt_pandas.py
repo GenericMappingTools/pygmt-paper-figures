@@ -1,4 +1,5 @@
 import io
+
 import pygmt
 import pandas as pd
 
@@ -27,9 +28,9 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.02*2**m:.2f} - 1p 1.0 Mw {m}" for m in [3, 4, 5])
+    "\n".join(f"S 0.4 c {0.02 * 2**m:.2f} - 1p 1 Mw {m}" for m in [3, 4, 5])
 )
-fig.legend(legend, position="jBR+o0.2c+l2", box=True)
+fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
 with fig.inset(
     position="jTL+w5.5/3.5c+o0.1c",
