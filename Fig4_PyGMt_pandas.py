@@ -1,3 +1,4 @@
+import io
 import pygmt
 import pandas as pd
 
@@ -5,46 +6,12 @@ df_eqs = pygmt.datasets.load_sample_data(name="japan_quakes")
 projection_main = "M15c"
 region_main = "131/152/33/51"  # string needed for GMT
 
-# -----------------------------------------------------------------------------
-# Determine dimension of maps
-# -> https://docs.generic-mapping-tools.org/dev/mapproject.html#w
-# -> https://www.pygmt.org/dev/api/generated/pygmt.clib.Session.html
-# -----------------------------------------------------------------------------
-# Get height of main map
-file_dim_main = "map_dim_main"
-with pygmt.clib.Session() as session:
-    session.call_module(
-        module="mapproject",
-        args=[
-            f"-J{projection_main}", f"-R{region_main}", "-W", f"->{file_dim_main}.txt"
-        ],
-    )
-map_dim_main = pd.read_csv(
-    f"{file_dim_main}.txt", sep="\t", names=["width", "height"]
-)
-map_height = map_dim_main["height"][0]
-
-# Determine height of the two histograms
-# Have a vertical space between them of 2 centimeters
-# Have the same hight for both histograms
-histo_height = (map_height - 2) / 2
-# -----------------------------------------------------------------------------
-
 # Create Figure
 fig = pygmt.Figure()
 
 # Main map
 fig.basemap(region=region_main, projection=projection_main, frame=True)
-# pygmt.makecpt(cmap="oleron", series=[-8000, 2500])
-# fig.grdimage("@earth_relief_30s_g", region=region_main, cmap=True)
 fig.coast(land="gray95", shorelines="gray50")
-
-# Inset showing study area globaly
-with fig.inset(position="jTL+w5c+o0.1c", margin=0.05):
-    fig.basemap(region="g", projection="G140/30/?", frame=0)
-    # Mark Japan via dcw or plot rectangle of study area via r+s
-    fig.coast(land="bisque", water="lightblue", dcw="JP+gtomato")
-    fig.basemap(frame="g30")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 500], reverse=True)
@@ -58,6 +25,11 @@ fig.plot(
     style="c",
     pen="gray10",
 )
+
+# Add legend for size-coding
+legend = io.StringIO("\n".join(f"S 0.4 c {0.02*2**m:.2f} - 1p 1.0 Mw {m}" for m in [3.0, 4.0, 5.0]))
+fig.legend(legend, position="jBR+o0.2c/0.2c+l2.0", box=True)
+
 
 # Add beachball for M 9.1 - 2011 Great Tohoku Earthquake, Japan
 # https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30/moment-tensor
@@ -73,32 +45,7 @@ fig.meca(
     pen="0.5p,gray30,solid",  # TODO maybe add offset
 )
 
-# Histogram for moment magnitude at the right bottom
-fig.shift_origin(xshift="w+1c")
-fig.histogram(
-    region=[3.9, 7.1, 0, 0],
-    projection=f"X10c/{histo_height}c",
-    frame=["lStE", "xa0.5f0.1+lMoment magnitude", "yaf+lCounts"],
-    data=df_eqs.magnitude,
-    series=0.1,
-    fill="darkgray",
-    pen="1p,lightgray,solid",
-    histtype=0,
-)
 
-# Histogram for hyocentral depth at the right top
-fig.shift_origin(yshift="h+2c")
-fig.histogram(
-    region=[0, 600, 0, 0],
-    projection=f"X10c/{histo_height}c",
-    frame=["lStE", "xa100f20+lHyocentral depth / km", "yaf+lCounts"],
-    data=df_eqs.depth_km,
-    series=20,
-    # fill="darkgray",
-    cmap=True,
-    pen="1p,lightgray,solid",
-    histtype=0,
-)
 
 fig.show()
 fig.savefig("Fig4_PyGMT_pandas.png")
