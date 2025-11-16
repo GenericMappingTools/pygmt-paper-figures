@@ -44,10 +44,9 @@ with fig.inset(position="jTL+w4.5c+o0.15c", margin=0.05):
     fig.coast(land="bisque", water="lightblue", dcw="JP+gtomato")
     fig.basemap(frame="g30")
 
-# Plot epicenters with color- and size-coding for hypocentral depth or moment
-# magnitude
+# Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 500], reverse=True)
-fig.colorbar(frame=["xa100f50+lHypocentral depth", "y+lkm"], position="+ef0.3c")
+fig.colorbar(frame=["xa100f20+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
@@ -63,7 +62,7 @@ fig.shift_origin(xshift="w+1c")
 fig.histogram(
     region=[3.9, 7.1, 0, 0],
     projection=f"X10c/{histo_height}c",
-    frame=["lStE", "xa1af0.5+lMoment magnitude", "yaf+lCounts"],
+    frame=["lStE", "xa0.5f0.1+lMoment magnitude", "yaf+lCounts"],
     data=df_eqs.magnitude,
     series=0.1,
     fill="darkgray",
@@ -76,7 +75,7 @@ fig.shift_origin(yshift="h+2c")
 fig.histogram(
     region=[0, 600, 0, 0],
     projection=f"X10c/{histo_height}c",
-    frame=["lStE", "xa1af0.5+lHyocentral depth / km", "yaf+lCounts"],
+    frame=["lStE", "xa100f20+lHyocentral depth / km", "yaf+lCounts"],
     data=df_eqs.depth_km,
     series=20,
     # fill="darkgray",
