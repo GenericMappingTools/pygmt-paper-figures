@@ -30,20 +30,6 @@ legend = io.StringIO(
 )
 fig.legend(legend, position="jBR+o0.2c/0.2c+l2.0", box=True)
 
-# Add beachball for M 9.1 - 2011 Great Tohoku Earthquake, Japan
-# https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30/moment-tensor
-focal_mechanism = {"strike": 193, "dip": 9, "rake": 78, "magnitude": 9.1}
-fig.meca(
-    spec=focal_mechanism,
-    scale="1c",  # TODO Have the same scaling for scatter plot and meca
-    longitude=142.373,
-    latitude=38.297,
-    depth=29,
-    compressionfill="tomato",
-    extensionfill="cornsilk",
-    pen="0.5p,gray30,solid",  # TODO maybe add offset
-)
-
 with fig.inset(
     position="jTL+w5.5/3.5c+o0.1c",
     margin=(1.0, 0.2, 1.0, 0.2),
@@ -52,11 +38,11 @@ with fig.inset(
     fig.histogram(
         # region=[3.9, 7.1, 0, 0],
         projection="X?c/?c",
-        frame=["WSrt", "xa1af0.5+lMoment magnitude", "yaf+lCounts"],
+        frame=["WSrt", "xa1af0.1+lMoment magnitude", "yaf+lCounts"],
         data=df_eqs.magnitude,
         series=0.1,
         fill="darkgray",
-        pen="1p,lightgray,solid",
+        pen="lightgray",
         histtype=0,
     )
 
