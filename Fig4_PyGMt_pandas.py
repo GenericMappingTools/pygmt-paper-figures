@@ -2,9 +2,22 @@ import io
 
 import pygmt
 import pandas as pd
+import requests
 
-# TODO request data
-df_eqs = pygmt.datasets.load_sample_data(name="japan_quakes")
+url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+params = {
+    "format": "csv",
+    "starttime": "2010-01-01",
+    "endtime":   "2024-01-02",
+    "minlatitude": 33,
+    "maxlatitude": 53,
+    "minlongitude": 131,
+    "maxlongitude": 152,
+    "minmagnitude": 5.0,
+}
+r = requests.get(url, params=params)
+df_eqs = pd.read_csv(io.StringIO(r.text))
+df_eqs = df_eqs.sort_values(by=["mag"], ascending=False)
 
 fig = pygmt.Figure()
 
@@ -17,8 +30,8 @@ fig.colorbar(frame=["xa100f20+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
-    size=0.02 * 2**df_eqs.magnitude,
-    fill=df_eqs.depth_km,
+    size=0.02 * 2**df_eqs.mag,
+    fill=df_eqs.depth,
     cmap=True,
     style="c",
     pen="gray10",
@@ -39,7 +52,7 @@ with fig.inset(
         region=[3.9, 7.1, 0, 0],
         projection="X?/?",
         frame=["WSrt", "xa1af0.1+lMw", "yaf+lCounts"],
-        data=df_eqs.magnitude,
+        data=df_eqs.mag,
         series=0.1,
         fill="darkgray",
         pen="lightgray",
