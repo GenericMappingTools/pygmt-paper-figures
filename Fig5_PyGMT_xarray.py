@@ -26,7 +26,7 @@ grd_mask = grd_geoid * landmask
 fig = pygmt.Figure()
 fig.basemap(region="d", projection="N10c", frame=True)
 fig.grdimage(grid=grd_mask) #, cmap="SCM/vik")
-fig.colorbar(frame=["xaf+lEarth geoid", "y+lm"])
+fig.colorbar(frame=["xaf+lEarth geoid", "y+lm"], position="+nNaN")
 fig.show()
 
 fig.savefig(fname="Fig5_PyGMT_xarray.png")
