@@ -39,7 +39,7 @@ with fig.inset(
 ):
     fig.histogram(
         region=[3.9, 7.1, 0, 0],
-        projection="X?c/?c",
+        projection="X?/?",
         frame=["WSrt", "xa1af0.1+lMoment magnitude", "yaf+lCounts"],
         data=df_eqs.magnitude,
         series=0.1,
