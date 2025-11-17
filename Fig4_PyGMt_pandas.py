@@ -18,7 +18,6 @@ params = {
 }
 r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
-df_eqs = df_eqs.sort_values(by=["mag"], ascending=False)
 
 fig = pygmt.Figure()
 
