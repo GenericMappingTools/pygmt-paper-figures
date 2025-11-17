@@ -13,8 +13,8 @@ params = {
     "maxlatitude": 53,
     "minlongitude": 131,
     "maxlongitude": 152,
-    "minmagnitude": 5,
-    "maxmagnitude": 7,
+    "minmagnitude": 4,
+    "maxmagnitude": 6.5,
 }
 r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
@@ -31,7 +31,7 @@ fig.colorbar(frame=["xa100f20+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
-    size=0.015 * 2**df_eqs.mag,
+    size=0.01 * 2**df_eqs.mag,
     fill=df_eqs.depth,
     cmap=True,
     style="c",
@@ -40,17 +40,17 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.015 * 2**m:.2f} - 1p 1 Mw {m}" for m in [5, 6, 7])
+    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4, 5, 6])
 )
-fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
+fig.legend(spec=legend, position="jBR+o0.2c/0.5c+l2", box=True)
 
 with fig.inset(
     position="jTL+w6c/3.5c+o0.1c",
-    margin=(1.2, 0.2, 1, 0.2),
+    margin=(1.4, 0.2, 1, 0.2),
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[4.9, 7.1, 0, 0],
+        region=[3.9, 6.6, 0, 0],
         projection="X?/?",
         frame=["WSrt", "xa1af0.1+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
