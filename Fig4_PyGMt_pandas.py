@@ -8,7 +8,6 @@ df_eqs = pygmt.datasets.load_sample_data(name="japan_quakes")
 
 fig = pygmt.Figure()
 
-# Main map
 fig.basemap(region=[131, 152, 33, 51], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
