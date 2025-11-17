@@ -42,7 +42,7 @@ fig.plot(
 legend = io.StringIO(
     "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4, 5, 6])
 )
-fig.legend(spec=legend, position="jBR+o0.2c/0.5c+l2", box=True)
+fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
 with fig.inset(
     position="jTL+w6c/3.5c+o0.1c",
