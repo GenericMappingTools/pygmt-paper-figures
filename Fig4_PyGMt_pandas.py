@@ -6,7 +6,6 @@ import pandas as pd
 # TODO request data
 df_eqs = pygmt.datasets.load_sample_data(name="japan_quakes")
 
-# Create Figure
 fig = pygmt.Figure()
 
 # Main map
