@@ -76,7 +76,7 @@ lon_max = 110
 lat_min = 0
 lat_max = 30
 mag_min = 4
-mag_max = 6.5
+mag_max = 6
 start_time = "2024-01-01"
 end_time = "2025-10-30"
 
