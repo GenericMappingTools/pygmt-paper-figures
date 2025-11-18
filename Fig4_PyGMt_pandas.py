@@ -119,6 +119,25 @@ legend = io.StringIO(
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
+# Myanmar earthquake on 2025/03/28
+# See also https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2010GL046099
+#          (https://doi.org/10.1029/2010GL046099)
+#          (last access: 2025/03/28)
+dict_fm = {"strike": 1, "dip": 82, "rake": 174, "magnitude": 9.1}
+fig.meca(
+    spec=dict_fm,
+    scale="1.15c",
+    longitude=95.922,
+    latitude=22.013,
+    depth=10,
+    compressionfill="tomato",
+    extensionfill="cornsilk",
+    pen="0.5p,gray50,solid",
+    offset="+s0.15c",
+    plot_longitude=101,
+    plot_latitude=15,
+)
+
 with fig.inset(
     position="jTL+w6c/3.5c+o0.1c",
     margin=(1.2, 0.2, 1, 0.2),
