@@ -7,17 +7,19 @@ import requests
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
     "format": "csv",
-    "starttime": "2022-01-01",
+    "starttime": "2015-01-01",
     "endtime": "2025-10-30",
     "minlatitude": 33,
     "maxlatitude": 53,
     "minlongitude": 131,
     "maxlongitude": 152,
-    "minmagnitude": 4,
-    "maxmagnitude": 6,
+    "minmagnitude": 4.5,
+    "maxmagnitude": 10,
+    "orderby": "magnitude",
 }
 r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
+df_eqs = df_eqs[df_eqs["magType"] != "mb"]  # Focus on moment magnitudes
 
 
 fig = pygmt.Figure()
@@ -39,7 +41,7 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4, 5, 6])
+    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4.5, 5.0, 5.5, 6.0])
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
@@ -50,11 +52,11 @@ with fig.inset(
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[3.9, 6.1, 0, 0],
+        region=[4.3, 10.2, 0, 0],
         projection="X?/?",
-        frame=["WSrt", "xa1af0.1+lMw", "yaf+lCounts"],
+        frame=["WSrt", "xa1f0.2+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
-        series=0.1,
+        series=0.2,
         fill="darkgray",
         pen="lightgray",
         histtype=0,
@@ -76,9 +78,9 @@ lon_min = 75
 lon_max = 110
 lat_min = 0
 lat_max = 30
-mag_min = 4
-mag_max = 6
-start_time = "2022-01-01"
+mag_min = 4.5
+mag_max = 10
+start_time = "2015-01-01"
 end_time = "2025-10-30"
 
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
@@ -92,9 +94,11 @@ params = {
     "maxlongitude": lon_max,
     "minmagnitude": mag_min,
     "maxmagnitude": mag_max,
+    "orderby": "magnitude",
 }
 r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
+df_eqs = df_eqs[df_eqs["magType"] != "mb"]  # Focus on moment magnitudes
 
 fig = pygmt.Figure()
 fig.basemap(region=[lon_min, lon_max, lat_min, lat_max], projection="M15c", frame=True)
@@ -115,15 +119,15 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4, 5, 6])
+    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4.5, 5.0, 5.5, 6.0])
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
 # Plot beachball for Myanmar earthquake on 2025/03/28
-dict_fm = {"strike": 1, "dip": 82, "rake": 174, "magnitude": 9.1}
+dict_fm = {"strike": 1, "dip": 82, "rake": 174, "magnitude": 7.7}
 fig.meca(
     spec=dict_fm,
-    scale="1.15c",
+    scale="1.35c",
     longitude=95.922,
     latitude=22.013,
     depth=10,
@@ -144,11 +148,11 @@ with fig.inset(
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[3.9, 6.1, 0, 0],
+        region=[4.3, 10.1, 0, 0],
         projection="X?/?",
-        frame=["WSrt", "xa1f0.1+lMw", "yaf+lCounts"],
+        frame=["WSrt", "xa1f0.2+lMw", "ya20f10+lCounts"],
         data=df_eqs.mag,
-        series=0.1,
+        series=0.2,
         fill="darkgray",
         pen="lightgray",
         histtype=0,
