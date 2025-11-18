@@ -72,11 +72,11 @@ import pandas as pd
 import requests
 
 lon_min = 75
-lon_max = 115
-lat_min = 5
-lat_max = 35
+lon_max = 110
+lat_min = 0
+lat_max = 30
 mag_min = 4
-mag_max = 9
+mag_max = 6.5
 start_time = "2024-01-01"
 end_time = "2025-10-30"
 
@@ -119,10 +119,7 @@ legend = io.StringIO(
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
-# Myanmar earthquake on 2025/03/28
-# See also https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2010GL046099
-#          (https://doi.org/10.1029/2010GL046099)
-#          (last access: 2025/03/28)
+# Plot beachball for Myanmar earthquake on 2025/03/28
 dict_fm = {"strike": 1, "dip": 82, "rake": 174, "magnitude": 9.1}
 fig.meca(
     spec=dict_fm,
@@ -136,15 +133,16 @@ fig.meca(
     offset="+s0.15c",
     plot_longitude=101,
     plot_latitude=15,
+    event_name="Mw 7.7 | 10 km"
 )
 
 with fig.inset(
-    position="jTL+w6c/3.5c+o0.1c",
+    position="jLB+w5.5c/3.5c+o0.1c",
     margin=(1.2, 0.2, 1, 0.2),
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[3.9, 7.1, 0, 0],
+        region=[3.9, 6.1, 0, 0],
         projection="X?/?",
         frame=["WSrt", "xa1f0.1+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
