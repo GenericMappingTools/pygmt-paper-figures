@@ -7,14 +7,14 @@ import requests
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
     "format": "csv",
-    "starttime": "2010-01-01",
-    "endtime": "2024-01-02",
+    "starttime": "2022-01-01",
+    "endtime": "2025-10-30",
     "minlatitude": 33,
     "maxlatitude": 53,
     "minlongitude": 131,
     "maxlongitude": 152,
     "minmagnitude": 4,
-    "maxmagnitude": 6.5,
+    "maxmagnitude": 6,
 }
 r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
@@ -23,6 +23,9 @@ fig = pygmt.Figure()
 
 fig.basemap(region=[131, 152, 33, 51], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
+
+# Plate boundaries after Bird 2003
+fig.plot(data="plate_boundaries_Bird_2003.txt", pen="1p,brown")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 500], reverse=True)
@@ -49,7 +52,7 @@ with fig.inset(
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[3.9, 6.6, 0, 0],
+        region=[3.9, 6.1, 0, 0],
         projection="X?/?",
         frame=["WSrt", "xa1af0.1+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
@@ -77,7 +80,7 @@ lat_min = 0
 lat_max = 30
 mag_min = 4
 mag_max = 6
-start_time = "2024-01-01"
+start_time = "2022-01-01"
 end_time = "2025-10-30"
 
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
@@ -99,6 +102,9 @@ fig = pygmt.Figure()
 
 fig.basemap(region=[lon_min, lon_max, lat_min, lat_max], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
+
+# Plate boundaries after Bird 2003
+fig.plot(data="plate_boundaries_Bird_2003.txt", pen="1p,brown")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 200], reverse=True)
@@ -131,9 +137,10 @@ fig.meca(
     extensionfill="cornsilk",
     pen="0.5p,gray50,solid",
     offset="+s0.15c",
-    plot_longitude=101,
-    plot_latitude=15,
-    event_name="Mw 7.7 | 10 km"
+    plot_longitude=87,
+    plot_latitude=23,
+    event_name="Mw 7.7 | 10 km",
+    labelbox="white@30",
 )
 
 with fig.inset(
