@@ -19,13 +19,10 @@ params = {
 r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
 
-fig = pygmt.Figure()
 
+fig = pygmt.Figure()
 fig.basemap(region=[131, 152, 33, 51], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
-
-# Plate boundaries after Bird 2003
-fig.plot(data="plate_boundaries_Bird_2003.txt", pen="1p,brown")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 500], reverse=True)
@@ -46,6 +43,7 @@ legend = io.StringIO(
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
+# Add histogramm for moment magnitude distribution
 with fig.inset(
     position="jTL+w6c/3.5c+o0.1c",
     margin=(1.4, 0.2, 1, 0.2),
@@ -99,12 +97,8 @@ r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
 
 fig = pygmt.Figure()
-
 fig.basemap(region=[lon_min, lon_max, lat_min, lat_max], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
-
-# Plate boundaries after Bird 2003
-fig.plot(data="plate_boundaries_Bird_2003.txt", pen="1p,brown")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 200], reverse=True)
@@ -137,12 +131,13 @@ fig.meca(
     extensionfill="cornsilk",
     pen="0.5p,gray50,solid",
     offset="+s0.15c",
-    plot_longitude=87,
+    plot_longitude=86,
     plot_latitude=23,
     event_name="Mw 7.7 | 10 km",
     labelbox="white@30",
 )
 
+# Add histogramm for moment magnitude distribution
 with fig.inset(
     position="jLB+w5.5c/3.5c+o0.1c",
     margin=(1.2, 0.2, 1, 0.2),
