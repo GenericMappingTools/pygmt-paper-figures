@@ -9,9 +9,9 @@ fig = pygmt.Figure()
 fig.basemap(region="d", projection="N10c", frame=True)
 fig.grdimage(grid=woa_temp.t_an.sel(depth=0), cmap="SCM/batlow")
 fig.colorbar(frame=["xaf+lSea surface temperature", "y+l@.C"])
-fig.show()
 
-# fig.savefig(fname="Fig5_PyGMT_xarray.png")
+fig.show()
+fig.savefig(fname="Fig5_PyGMT_xarray_sst.png")
 
 
 # %%
@@ -27,6 +27,26 @@ fig = pygmt.Figure()
 fig.basemap(region="d", projection="N10c", frame=True)
 fig.grdimage(grid=grd_mask, cmap="SCM/vik")
 fig.colorbar(frame=["xaf+lEarth geoid", "y+lm"], position="+nNaN")
-fig.show()
 
-fig.savefig(fname="Fig5_PyGMT_xarray.png")
+fig.show()
+fig.savefig(fname="Fig5_PyGMT_xarray_geoid.png")
+
+
+# %%
+import pygmt
+from pygmt.datasets import load_mars_relief
+
+mars = load_mars_relief(resolution="30m")
+with pygmt.config(PROJ_ELLIPSOID="mars"):
+    mars_filtered = mars.gmt.filter(filter="g50", distance=4)
+    mars_gradient = mars_filtered.gmt.gradient(azimuth=-45, normalize="t1")
+
+fig = pygmt.Figure()
+fig.basemap(region="d", projection="H10c", frame=True)
+fig.grdimage(mars, cmap="@mars_relief.cpt", shading=True)
+fig.shift_origin(yshift="-h-1c")
+fig.basemap(region="d", projection="H10c", frame=True)
+fig.grdimage(mars_filtered, cmap="@mars_relief.cpt", shading=mars_gradient)
+
+fig.show()
+fig.savefig(fname="Fig5_PyGMT_xarray_mars.png")
