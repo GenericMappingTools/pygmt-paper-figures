@@ -10,12 +10,12 @@ params = {
     "starttime": "2000-01-01",
     "endtime": "2025-10-30",
     "mindepth": 70,
-    "minlatitude": 33,
-    "maxlatitude": 53,
-    "minlongitude": 131,
-    "maxlongitude": 152,
+    "minlatitude": 30, #33,
+    "maxlatitude": 60, #53,
+    "minlongitude": 120, #131,
+    "maxlongitude": 168, #152,
     "minmagnitude": 5,
-    "maxmagnitude": 6.5,
+    # "maxmagnitude": 6.5,
     "orderby": "magnitude",
     "format": "csv",
 }
@@ -25,16 +25,16 @@ df_eqs = df_eqs[df_eqs["magType"] != "mb"]  # Focus on moment magnitudes
 
 
 fig = pygmt.Figure()
-fig.basemap(region=[131, 152, 33, 51], projection="M15c", frame=True)
+fig.basemap(region=[120, 168, 30, 60], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
-pygmt.makecpt(cmap="SCM/navia", series=[70, 500], reverse=True, transparency=30)
+pygmt.makecpt(cmap="SCM/navia", series=[70, 700], reverse=True, transparency=30)
 fig.colorbar(frame=["xa100f20+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
-    size=0.01 * 2**df_eqs.mag,
+    size=0.005 * 2**df_eqs.mag,
     fill=df_eqs.depth,
     cmap=True,
     style="c",
@@ -43,7 +43,7 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [5.0, 5.5, 6.0])
+    "\n".join(f"S 0.4 c {0.005 * 2**m:.2f} - 1p 1 Mw {m}" for m in [5, 6, 7])
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
@@ -54,7 +54,7 @@ with fig.inset(
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[4.9, 6.6, 0, 0],
+        region=[4.8, 10.2, 0, 0],
         projection="X?/?",
         frame=["WSrt", "xa1f0.2+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
@@ -102,7 +102,7 @@ params = {
     # "minlongitude": lon_min,
     # "maxlongitude": lon_max,
     "minmagnitude": mag_min,
-    "maxmagnitude": mag_max,
+    # "maxmagnitude": mag_max,
     "orderby": "magnitude",
 }
 r = requests.get(url, params=params)
@@ -119,7 +119,7 @@ fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
-    size=0.01 * 2**df_eqs.mag,
+    size=0.005 * 2**df_eqs.mag,
     fill=df_eqs.depth,
     cmap=True,
     style="c",
@@ -128,7 +128,7 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [5.0, 5.5, 6.0])
+    "\n".join(f"S 0.4 c {0.005 * 2**m:.2f} - 1p 1 Mw {m}" for m in [5, 6, 7])
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
@@ -139,11 +139,11 @@ with fig.inset(
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[4.9, 6.6, 0, 0],
+        region=[4.8, 10.2, 0, 0],
         projection="X?/?",
-        frame=["WSrt", "xa1f0.1+lMw", "yaf+lCounts"],
+        frame=["WSrt", "xa1f0.2+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
-        series=0.1,
+        series=0.2,
         fill="darkgray",
         pen="lightgray",
         histtype=0,
