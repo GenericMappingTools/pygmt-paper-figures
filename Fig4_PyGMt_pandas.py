@@ -7,15 +7,17 @@ import requests
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
     "format": "csv",
-    "starttime": "2015-01-01",
+    "starttime": "2000-01-01",
     "endtime": "2025-10-30",
+    "mindepth": 70,
     "minlatitude": 33,
     "maxlatitude": 53,
     "minlongitude": 131,
     "maxlongitude": 152,
-    "minmagnitude": 4.5,
-    "maxmagnitude": 10,
+    "minmagnitude": 5,
+    "maxmagnitude": 6.5,
     "orderby": "magnitude",
+    "format": "csv",
 }
 r = requests.get(url, params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
@@ -27,7 +29,7 @@ fig.basemap(region=[131, 152, 33, 51], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
-pygmt.makecpt(cmap="SCM/navia", series=[0, 500], reverse=True)
+pygmt.makecpt(cmap="SCM/navia", series=[70, 500], reverse=True, transparency=30)
 fig.colorbar(frame=["xa100f20+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
@@ -41,7 +43,7 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4.5, 5.0, 5.5, 6.0])
+    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [5.0, 5.5, 6.0])
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
@@ -52,7 +54,7 @@ with fig.inset(
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[4.3, 10.2, 0, 0],
+        region=[4.9, 6.6, 0, 0],
         projection="X?/?",
         frame=["WSrt", "xa1f0.2+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
@@ -78,20 +80,27 @@ lon_min = 75
 lon_max = 110
 lat_min = 0
 lat_max = 30
-mag_min = 4.5
-mag_max = 10
-start_time = "2015-01-01"
-end_time = "2025-10-30"
 
+lon_min = -90
+lon_max = -30
+lat_min = -50
+lat_max = 10
+
+hd_min = 70
+mag_min = 5
+mag_max = 6.5
+start_time = "2000-01-01"
+end_time = "2025-10-30"
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
     "format": "csv",
     "starttime": start_time,
     "endtime": end_time,
-    "minlatitude": lat_min,
-    "maxlatitude": lat_max,
-    "minlongitude": lon_min,
-    "maxlongitude": lon_max,
+    "mindepth": hd_min,
+    # "minlatitude": lat_min,
+    # "maxlatitude": lat_max,
+    # "minlongitude": lon_min,
+    # "maxlongitude": lon_max,
     "minmagnitude": mag_min,
     "maxmagnitude": mag_max,
     "orderby": "magnitude",
@@ -105,7 +114,7 @@ fig.basemap(region=[lon_min, lon_max, lat_min, lat_max], projection="M15c", fram
 fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
-pygmt.makecpt(cmap="SCM/navia", series=[0, 200], reverse=True)
+pygmt.makecpt(cmap="SCM/navia", series=[70, 700], reverse=True, transparency=30)
 fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"], position="+ef0.3c")
 fig.plot(
     x=df_eqs.longitude,
@@ -119,40 +128,22 @@ fig.plot(
 
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [4.5, 5.0, 5.5, 6.0])
+    "\n".join(f"S 0.4 c {0.01 * 2**m:.2f} - 1p 1 Mw {m}" for m in [5.0, 5.5, 6.0])
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=True)
 
-# Plot beachball for Myanmar earthquake on 2025/03/28
-dict_fm = {"strike": 1, "dip": 82, "rake": 174, "magnitude": 7.7}
-fig.meca(
-    spec=dict_fm,
-    scale="1.35c",
-    longitude=95.922,
-    latitude=22.013,
-    depth=10,
-    compressionfill="tomato",
-    extensionfill="cornsilk",
-    pen="0.5p,gray50,solid",
-    offset="+s0.15c",
-    plot_longitude=86,
-    plot_latitude=23,
-    event_name="Mw 7.7 | 10 km",
-    labelbox="white@30",
-)
-
 # Add histogramm for moment magnitude distribution
 with fig.inset(
-    position="jLB+w5.5c/3.5c+o0.1c",
-    margin=(1.2, 0.2, 1, 0.2),
+    position="jRT+w5.5c/3.5c+o0.1c",
+    margin=(1.3, 0.2, 1, 0.2),
     box=pygmt.params.Box(fill="bisque"),
 ):
     fig.histogram(
-        region=[4.3, 10.1, 0, 0],
+        region=[4.9, 6.6, 0, 0],
         projection="X?/?",
-        frame=["WSrt", "xa1f0.2+lMw", "ya20f10+lCounts"],
+        frame=["WSrt", "xa1f0.1+lMw", "yaf+lCounts"],
         data=df_eqs.mag,
-        series=0.2,
+        series=0.1,
         fill="darkgray",
         pen="lightgray",
         histtype=0,
