@@ -38,7 +38,7 @@ from pygmt.datasets import load_mars_relief
 
 mars = load_mars_relief(resolution="30m")
 with pygmt.config(PROJ_ELLIPSOID="mars"):
-    mars_filtered = mars.gmt.filter(filter="g50", distance=4)
+    mars_filtered = mars.gmt.filter(filter="g500", distance=4)
     mars_gradient = mars_filtered.gmt.gradient(azimuth=-45, normalize="t1")
 
 fig = pygmt.Figure()
