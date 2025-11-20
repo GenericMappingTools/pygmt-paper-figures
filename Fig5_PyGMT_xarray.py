@@ -42,11 +42,13 @@ with pygmt.config(PROJ_ELLIPSOID="mars"):
     mars_gradient = mars_filtered.gmt.gradient(azimuth=-45, normalize="t1")
 
 fig = pygmt.Figure()
+pygmt.makecpt(cmap="oleron", series=[-2000, 4000])
 fig.basemap(region="d", projection="H10c", frame=True)
-fig.grdimage(mars, cmap="@mars_relief.cpt", shading=True)
+fig.grdimage(mars, cmap=True, shading=True)
 fig.shift_origin(yshift="-h-1c")
 fig.basemap(region="d", projection="H10c", frame=True)
-fig.grdimage(mars_filtered, cmap="@mars_relief.cpt", shading=mars_gradient)
+fig.grdimage(mars_filtered, cmap=True, shading=mars_gradient)
+fig.colorbar(frame=["xa1000f100+lElevation of Mars", "y+lm"])
 
 fig.show()
 fig.savefig(fname="Fig5_PyGMT_xarray_mars.png")
