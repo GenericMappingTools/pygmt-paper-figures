@@ -27,6 +27,9 @@ fig.savefig(fname="Fig7_PyGMT_geopandas.png")
 import pygmt
 import geopandas as gpd
 
+region = "=SA"
+region = [-89, -33, -56.5, 9.7]
+
 world = gpd.read_file("https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_countries.zip")
 rivers = gpd.read_file("https://naciscdn.org/naturalearth/110m/physical/ne_110m_rivers_lake_centerlines.zip")
 cities = gpd.read_file("https://naciscdn.org/naturalearth/110m/cultural/ne_110m_populated_places_simple.zip")
@@ -34,24 +37,26 @@ cities = gpd.read_file("https://naciscdn.org/naturalearth/110m/cultural/ne_110m_
 world["POP_EST"] *= 1.0e-5
 
 fig = pygmt.Figure()
-fig.basemap(region="=SA", projection="M15c", frame=True)
-fig.plot(data=world, pen="0.5p,black", fill="lightgreen")
-pygmt.makecpt(cmap="turbo", series=(0, 3000, 100))
+fig.basemap(region=region, projection="M15c", frame=True)
+pygmt.makecpt(cmap="batlow", series=(0, 2700, 100)) # 30000
 fig.plot(
-    data=world,
-    pen="0.2p,gray10",
+    data=world[["POP_EST", "geometry"]],
+    pen="1p,gray50",
     fill="+z",
     cmap=True,
     aspatial="Z=POP_EST",
 )
-fig.colorbar(frame=True)
-fig.plot(data=rivers, pen="1p,blue")
-fig.plot(data=cities, style="c0.1c", fill="red", pen="black")
+fig.colorbar(frame=["x+lPopulation", "y+l*10e-5"])
+fig.plot(data=rivers["geometry"], pen="1.5p,skyblue")
+fig.plot(data=cities["geometry"], style="s0.3c", fill="red", pen="1p,black")
 fig.text(
     x=cities.geometry.x,
     y=cities.geometry.y,
     text=cities["name"],
     font="10p,Helvetica-Bold,black",
-    offset="0.2c/0.2c",
+    offset="0c/-0.3c",
+    justify="TR",
+    fill="white@30",
 )
 fig.show()
+fig.savefig(fname="Fig7_PyGMT_geopandas_ne.png")
