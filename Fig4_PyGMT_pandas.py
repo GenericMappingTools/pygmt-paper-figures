@@ -19,7 +19,7 @@ url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 for lon_min, lon_max, lat_min, lat_max, region, histo_pos in zip(
     [-84, 125, 163, 91, 133, 0],
     [-33, 160, 188, 134, 149, 360],
-    [-47, 25, -40, -20, 12, -70],
+    [-47, 25, -40, -21, 12, -70],
     [9, 57, -14, 19, 40, 70],
     ["region1", "region2", "region3", "region4", "region5", "global"],
     ["TR", "TL", "BL", "BL", "BL", "TL"],
@@ -66,7 +66,7 @@ for lon_min, lon_max, lat_min, lat_max, region, histo_pos in zip(
 
     # Add histogramm for moment magnitude distribution
     with fig.inset(
-        position=f"j{histo_pos}+w6c/3.5c+o0.1c",
+        position=f"j{histo_pos}+w7c/4c+o0.1c",
         margin=(1.3, 0.2, 1, 0.2),
         box=pygmt.params.Box(fill="bisque"),
     ):
