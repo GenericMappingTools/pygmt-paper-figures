@@ -52,7 +52,7 @@ fig.image(
     bitcolor="white+t",
 )
 
-# # Add the PyGMT part.
+# Add the PyGMT part.
 fig.pygmtlogo(position="g5/2.65+jMC+w2c", wordmark="vertical")
 fig.plot(
     data=[[2.6, 3, 3.9, 3], [6.1, 3, 7.4, 3]],
