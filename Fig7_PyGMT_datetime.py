@@ -12,9 +12,9 @@ fig.basemap(
 )
 
 for csvfile, color, label in zip(
-    ["star_history_gmt.csv", "star_history_pygmt.csv", "star_history_gmtjl.csv", "star_history_gmtmex.csv"],
-    ["238/86/52", "63/124/173", "170/121/193", "253/131/68"],
-    ["GMT", "PyGMT", "GMT.jl", "gmtmex"],
+    ["star_history_gmt.csv", "star_history_gmtmex.csv", "star_history_gmtjl.csv", "star_history_pygmt.csv"],
+    ["238/86/52", "253/131/68", "170/121/193", "63/124/173"],
+    ["GMT", "GMT/MEX", "GMT.jl", "PyGMT"],
 ):
     df = pd.read_csv(csvfile)
     df["Date"] = df["Date"].str.split(" \\(").str[0]
@@ -24,7 +24,7 @@ for csvfile, color, label in zip(
     fig.plot(x=df["Date"], y=df["Stars"], fill=color, style="a0.35c", label=label)
 
 fig.legend(
-    position="jTL+o0.1c+w1.9c",
+    position="jTL+o0.1c+w2.3",
     box=pygmt.params.Box(fill="gray95", pen="0.5p,gray50", radius="3p")
 )
 
