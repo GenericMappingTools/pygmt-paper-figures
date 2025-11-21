@@ -27,36 +27,40 @@ fig.savefig(fname="Fig7_PyGMT_geopandas.png")
 import pygmt
 import geopandas as gpd
 
-region = "=SA"
-region = [-89, -33, -56.5, 9.7]
 
 world = gpd.read_file("https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_countries.zip")
 rivers = gpd.read_file("https://naciscdn.org/naturalearth/110m/physical/ne_110m_rivers_lake_centerlines.zip")
 cities = gpd.read_file("https://naciscdn.org/naturalearth/110m/cultural/ne_110m_populated_places_simple.zip")
-
+cities_mega = cities[cities["megacity"]==1]
+cities_world = cities[cities["worldcity"]==1]
 world["POP_EST"] *= 1.0e-5
 
-fig = pygmt.Figure()
-fig.basemap(region=region, projection="M15c", frame=True)
-pygmt.makecpt(cmap="batlow", series=(0, 2700, 100)) # 30000
-fig.plot(
-    data=world[["POP_EST", "geometry"]],
-    pen="1p,gray50",
-    fill="+z",
-    cmap=True,
-    aspatial="Z=POP_EST",
-)
-fig.colorbar(frame=["x+lPopulation", "y+l*10e-5"])
-fig.plot(data=rivers["geometry"], pen="1.5p,skyblue")
-fig.plot(data=cities["geometry"], style="s0.3c", fill="red", pen="1p,black")
-fig.text(
-    x=cities.geometry.x,
-    y=cities.geometry.y,
-    text=cities["name"],
-    font="10p,Helvetica-Bold,black",
-    offset="0c/-0.3c",
-    justify="TR",
-    fill="white@30",
-)
-fig.show()
-fig.savefig(fname="Fig7_PyGMT_geopandas_ne.png")
+for region, label in zip(
+    [[-89, -33, -56.5, 10], [-13, 27, 33, 67], [-19.5, 53, -38, 37.5]],
+    ["region1", "region2", "region3"],
+):
+
+    fig = pygmt.Figure()
+    fig.basemap(region=region, projection="M15c", frame=True)
+    pygmt.makecpt(cmap="bilbao", series=(0, 2300))
+    fig.plot(
+        data=world[["POP_EST", "geometry"]],
+        pen="1p,gray50",
+        fill="+z",
+        cmap=True,
+        aspatial="Z=POP_EST",
+    )
+    fig.colorbar(frame=["x+lPopulation", "y+l*10e-5"])
+    fig.plot(data=rivers["geometry"], pen="1.5p,darkblue")
+    fig.plot(data=cities["geometry"], style="s0.25c", fill="red", pen="1p,black")
+    fig.text(
+        x=cities_world.geometry.x,
+        y=cities_world.geometry.y,
+        text=cities_world["name"],
+        font="10p,Helvetica-Bold,black",
+        offset="0c/-0.25c",
+        justify="TR",
+        fill="white@30",
+    )
+    fig.show()
+    fig.savefig(fname=f"Fig7_PyGMT_geopandas_{label}.png")
