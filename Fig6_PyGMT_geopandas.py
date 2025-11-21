@@ -36,4 +36,4 @@ for region, label in zip(
         fill="white@30",
     )
     fig.show()
-    fig.savefig(fname=f"Fig7_PyGMT_geopandas_{label}.png")
+    fig.savefig(fname=f"Fig6_PyGMT_geopandas_{label}.png")
