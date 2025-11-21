@@ -25,12 +25,12 @@ for region, label in zip(
     )
     fig.colorbar(frame="x+lPopulation (millions)")
     fig.plot(data=rivers["geometry"], pen="1.5p,darkblue")
-    fig.plot(data=cities["geometry"], style="s0.25c", fill="red", pen="1p,black")
+    fig.plot(data=cities["geometry"], style="s0.25c", fill="darkorange", pen="1p")
     fig.text(
         x=cities_world.geometry.x,
         y=cities_world.geometry.y,
         text=cities_world["name"],
-        font="10p,Helvetica-Bold,black",
+        font="10p,Helvetica-Bold",
         offset="0c/-0.25c",
         justify="TR",
         fill="white@30",
