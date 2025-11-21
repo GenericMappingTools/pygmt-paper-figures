@@ -16,7 +16,6 @@
 
 # %%
 import pygmt
-import xarray as xr
 
 grd_geoid = pygmt.datasets.load_earth_geoid()
 # Create landmask: Set wet nodes to NaN and dry nodes to one
