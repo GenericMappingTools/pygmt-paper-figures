@@ -6,7 +6,7 @@ rivers = gpd.read_file("https://naciscdn.org/naturalearth/110m/physical/ne_110m_
 cities = gpd.read_file("https://naciscdn.org/naturalearth/110m/cultural/ne_110m_populated_places_simple.zip")
 cities_mega = cities[cities["megacity"]==1]  # Focus on large cities
 cities_world = cities[cities["worldcity"]==1]
-world["POP_EST"] *= 1.0e-5
+world["POP_EST"] *= 1.0e-6
 
 for region, label in zip(
     [[-89, -33, -56.5, 10], [-13, 27, 33, 67], [-19.5, 53, -38, 37.5]],
