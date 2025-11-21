@@ -23,10 +23,8 @@ fig.grdimage(
     projection="G270/20/12c",
     frame="g30",
 )
-
 fig.colorbar(
     frame=["xa2000f1000+lElevation of Mars", "y+lm"], position="+e0.3c+o-7c/1c"
 )
-
 fig.show()
-fig.savefig(fname="Fig5_PyGMT_xarray_mars.png")
+fig.savefig(fname="Fig5_PyGMT_xarray.png")
