@@ -44,7 +44,7 @@ fig.text(
     font="8p,1,white",
     fill=blue,
     pen="0.5p,-",
-    clearance="0.1c/0.1c+tO",
+    clearance="0.1c+tO",
 )
 fig.image(
     "https://www.python.org/static/community_logos/python-logo-master-v3-TM.png",
