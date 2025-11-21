@@ -4,14 +4,8 @@ import pygmt
 import pandas as pd
 import requests
 
-lon_min = 75
-lon_max = 110
-lat_min = 0
-lat_max = 30
-
 hd_min = 70
 mag_min = 5
-mag_max = 10
 start_time = "2000-01-01"
 end_time = "2025-10-30"
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
@@ -34,7 +28,6 @@ for lon_min, lon_max, lat_min, lat_max, region, histo_pos in zip(
         "minlongitude": lon_min,
         "maxlongitude": lon_max,
         "minmagnitude": mag_min,
-        "maxmagnitude": mag_max,
         "orderby": "magnitude",
     }
     r = requests.get(url, params=params)
