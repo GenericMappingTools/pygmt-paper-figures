@@ -42,7 +42,7 @@ fig.plot(
 legend = io.StringIO(
     "\n".join(f"S 0.4 c {0.005 * 2**mag:.2f} - 1p 1 Mw {mag}" for mag in [5, 6, 7])
 )
-fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white"))
+fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white", pen="0.1p"))
 
 
 # Add histogram for moment magnitude distribution
