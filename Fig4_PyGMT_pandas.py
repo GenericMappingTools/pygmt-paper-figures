@@ -28,7 +28,7 @@ fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[70, 700], reverse=True, transparency=30)
-fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"], position="+ef0.3c")
+fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"])
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
