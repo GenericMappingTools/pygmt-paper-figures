@@ -47,9 +47,7 @@ fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white"))
 
 # Add histogram for moment magnitude distribution
 with fig.inset(
-    position="jBL+w7c/4c+o0.1c",
-    margin=(1.3, 0.2, 1, 0.2),
-    box=pygmt.params.Box(fill="bisque"),
+    position="jBL+w7c/4c+o0.1c", margin=(1.3, 0.2, 1, 0.2), box=Box(fill="bisque")
 ):
     fig.histogram(
         region=[4.8, 10.2, 0, 0],
