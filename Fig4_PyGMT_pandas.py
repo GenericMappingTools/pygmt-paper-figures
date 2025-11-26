@@ -46,18 +46,19 @@ fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white", pen="0.1p
 
 # Add histogram for moment magnitude distribution
 with fig.inset(
-    position="jBL+w7c/4c+o0.1c", margin=(1.3, 0.2, 1, 0.2), box=Box(fill="bisque")
+    position="jBL+w7c/4c+o0.1c", margin=(1.1, 0.2, 0.9, 0.2), box=Box(fill="bisque")
 ):
-    fig.histogram(
-        region=[4.8, 10.2, 0, 0],
-        projection="X?/?",
-        frame=["WSrt", "xa1f0.2+lMw", "yaf+lCounts"],
-        data=df_eqs.mag,
-        series=0.2,
-        fill="darkgray",
-        pen="lightgray",
-        histtype=0,
-    )
+    with pygmt.config(FONT="8p"):
+        fig.histogram(
+            region=[4.8, 10.2, 0, 0],
+            projection="X?/?",
+            frame=["WSrt", "xa1f0.2+lMw", "yaf+lCounts"],
+            data=df_eqs.mag,
+            series=0.2,
+            fill="darkgray",
+            pen="lightgray",
+            histtype=0,
+        )
 
 fig.show()
 fig.savefig("Fig4_PyGMT_pandas.png")
