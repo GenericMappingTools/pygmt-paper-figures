@@ -3,7 +3,6 @@ import io
 import pygmt
 import pandas as pd
 import requests
-from pygmt.params import Box
 
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
@@ -13,7 +12,7 @@ params = {
     "mindepth": 70,
     "minlongitude": 91,
     "maxlongitude": 134,
-    "minlatitude": -21,
+    "minlatitude": -22,
     "maxlatitude": 19,
     "minmagnitude": 5,
     "orderby": "magnitude",
@@ -23,7 +22,7 @@ df_eqs = pd.read_csv(io.StringIO(r.text))
 df_eqs = df_eqs[df_eqs["magType"] != "mb"]  # Focus on moment magnitudes
 
 fig = pygmt.Figure()
-fig.basemap(region=[91, 134, -21, 19], projection="M15c", frame=True)
+fig.basemap(region=[91, 134, -22, 19], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
@@ -42,12 +41,10 @@ fig.plot(
 legend = io.StringIO(
     "\n".join(f"S 0.4 c {0.005 * 2**mag:.2f} - 1p 1 Mw {mag}" for mag in [5, 6, 7])
 )
-fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white", pen="0.1p"))
+fig.legend(spec=legend, position="jLM+jTL+o0.2c/0c+l2", box=True)
 
 # Add histogram for moment magnitude distribution
-with fig.inset(
-    position="jBL+w7c/4c+o0.1c", margin=(1.1, 0.2, 0.9, 0.2), box=Box(fill="bisque")
-):
+with fig.inset(position="jBL+w7c/4c+o0.2c", margin=(1.2, 0.2, 0.9, 0.2), box=True):
     with pygmt.config(FONT="8p"):
         fig.histogram(
             region=[4.8, 10.2, 0, 0],
