@@ -27,10 +27,11 @@ fig.text(
     x=cities_world.geometry.x,
     y=cities_world.geometry.y,
     text=cities_world["name"],
-    offset="0c/-0.22c",
+    offset="0c/-0.3c",
     justify="TR",
     font="10p,Helvetica-Bold",
-    fill="darkorange@60",
+    fill="white@50",
+    pen="0.8p,darkorange",
     clearance="0.1c+tO",
 )
 fig.show()
