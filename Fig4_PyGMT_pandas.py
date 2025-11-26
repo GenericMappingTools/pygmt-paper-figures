@@ -3,6 +3,7 @@ import io
 import pygmt
 import pandas as pd
 import requests
+from pygmt.params import Box
 
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
@@ -41,7 +42,7 @@ fig.plot(
 legend = io.StringIO(
     "\n".join(f"S 0.4 c {0.005 * 2**mag:.2f} - 1p 1 Mw {mag}" for mag in [5, 6, 7])
 )
-fig.legend(spec=legend, position="jBL+jBL+o0.2c/4.4c+l2", box=True)
+fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white", pen="black"))
 
 # Add histogram for moment magnitude distribution
 with fig.inset(position="jBL+w7c/4c+o0.2c", margin=(1.2, 0.2, 0.9, 0.2), box=True):
