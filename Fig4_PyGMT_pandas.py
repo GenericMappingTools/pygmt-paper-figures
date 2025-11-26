@@ -3,6 +3,7 @@ import io
 import pygmt
 import pandas as pd
 import requests
+from pygmt.params import Box
 
 url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
