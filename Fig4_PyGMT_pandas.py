@@ -10,10 +10,6 @@ params = {
     "starttime": "2000-01-01",
     "endtime": "2025-10-30",
     "mindepth": 70,
-    "minlongitude": 91,
-    "maxlongitude": 134,
-    "minlatitude": -22,
-    "maxlatitude": 19,
     "minmagnitude": 5,
     "orderby": "magnitude",
 }
