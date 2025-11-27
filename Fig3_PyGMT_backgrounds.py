@@ -35,7 +35,7 @@ with fig.subplot(
         surftype="s",
         shading=True,
         zsize="1.5c",
-        plane="+ggrey",
+        plane="+ggray",
         perspective=True,
     )
 
