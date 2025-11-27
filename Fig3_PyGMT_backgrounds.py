@@ -9,9 +9,9 @@ with fig.subplot(
     subsize=("12c", "8.5c"),
     autolabel="(a)+o0.15c/0.3c+gwhite@30+v",
     margins=("0.3c", "0.2c"),
+    frame="WSrt",
     sharex="b",
     sharey="l",
-    frame="WSrt",
 ):
 
     # Top left
