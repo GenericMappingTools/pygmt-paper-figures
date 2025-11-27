@@ -45,9 +45,7 @@ provider = "https://naciscdn.org/naturalearth"
 world = gpd.read_file(f"{provider}/50m/cultural/ne_50m_admin_0_countries.zip")
 world["POP_EST"] *= 1e-6
 world_africa = world[world["CONTINENT"] == "Africa"].copy()
-rivers = gpd.read_file(f"{provider}/50m/physical/ne_50m_rivers_lake_centerlines.zip")
-rivers = rivers[rivers["scalerank"] != 5]
-rivers = rivers.cx[-19.5:40, -36.5:30].copy()
+rivers = gpd.read_file(f"{provider}/110m/physical/ne_110m_rivers_lake_centerlines.zip")
 cities = gpd.read_file(f"{provider}/110m/cultural/ne_110m_populated_places_simple.zip")
 cities_small = cities[cities["worldcity"] != 1].copy()  # Smaller cities
 cities_north = cities_small.cx[-19.5:14, 16:37].copy()
