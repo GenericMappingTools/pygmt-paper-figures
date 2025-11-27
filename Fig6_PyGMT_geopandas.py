@@ -13,16 +13,16 @@ fig = pygmt.Figure()
 fig.basemap(region=[-19.5, 53, -38, 37.5], projection="M15c", frame=True)
 pygmt.makecpt(cmap="bilbao", series=(0, 100))
 fig.plot(
-    data=world[["POP_EST", "geometry"]],
+    data=world,
     pen="1p,gray50",
     fill="+z",
     cmap=True,
     aspatial="Z=POP_EST",
 )
 fig.colorbar(frame="x10f5+lPopulation (millions)", position="+ef0.3c")
-fig.plot(data=rivers["geometry"], pen="1.5p,darkblue")
-fig.plot(data=cities_small["geometry"], style="s0.2c", fill="lightgray", pen="1p")
-fig.plot(data=cities_world["geometry"], style="s0.3c", fill="darkorange", pen="1p")
+fig.plot(data=rivers, pen="1.5p,darkblue")
+fig.plot(data=cities_small, style="s0.2c", fill="lightgray", pen="1p")
+fig.plot(data=cities_world, style="s0.3c", fill="darkorange", pen="1p")
 fig.text(
     x=cities_world.geometry.x,
     y=cities_world.geometry.y,
