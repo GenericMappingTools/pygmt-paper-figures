@@ -15,7 +15,11 @@ params = {
 }
 r = requests.get("https://earthquake.usgs.gov/fdsnws/event/1/query", params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
-df_eqs = df_eqs[df_eqs["magType"] != "mb"]  # Focus on moment magnitudes
+df_eqs = df_eqs[
+    (df_eqs["longitude"] >= 91) & (df_eqs["longitude"] <= 134)
+    & (df_eqs["latitude"] >= -22) & (df_eqs["latitude"] <= 19)
+    & (df_eqs["magType"] != "mb")
+]
 
 fig = pygmt.Figure()
 fig.basemap(region=[91, 134, -22, 19], projection="M15c", frame=True)
