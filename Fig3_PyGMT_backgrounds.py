@@ -13,7 +13,6 @@ with fig.subplot(
     sharex="b",
     sharey="l",
 ):
-
     # Top left
     fig.basemap(region=region, projection="M?", panel=0)
     fig.coast(land="gray", water="lightblue", shorelines=True, resolution="high")
