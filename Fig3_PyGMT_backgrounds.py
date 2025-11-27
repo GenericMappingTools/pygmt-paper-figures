@@ -38,6 +38,5 @@ with fig.subplot(
         plane="+ggray",
         perspective=True,
     )
-
 fig.show()
 fig.savefig("Fig3_PyGMT_backgrounds.png")
