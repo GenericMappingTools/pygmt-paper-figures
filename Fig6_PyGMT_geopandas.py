@@ -10,7 +10,7 @@ cities_small = cities[cities["worldcity"] != 1].copy()  # Smaller cities
 cities_world = cities[cities["worldcity"] == 1].copy()  # Larger (world) cities
 
 fig = pygmt.Figure()
-fig.basemap(region=[-19.5, 53, -38, 37.5], projection="M15c", frame=True)
+fig.basemap(region=[-19.5, 54.5, -37.5, 37.5], projection="M15c", frame=True)
 
 pygmt.makecpt(cmap="bilbao", series=(0, 200))
 fig.plot(data=world[["geometry", "POP_EST"]], pen="1p,gray50", fill="+z", cmap=True, aspatial="Z=POP_EST")
