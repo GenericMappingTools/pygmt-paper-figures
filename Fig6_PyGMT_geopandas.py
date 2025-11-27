@@ -16,7 +16,7 @@ pygmt.makecpt(cmap="bilbao", series=(0, 200))
 fig.plot(data=world, pen="1p,gray50", fill="+z", cmap=True, aspatial="Z=POP_EST")
 fig.colorbar(frame="x10f5+lPopulation (millions)")
 
-fig.plot(data=rivers, pen="1.5p,darkblue")
+fig.plot(data=rivers, pen="1.5p,dodgerblue4")
 
 fig.plot(data=cities_small, style="s0.2c", fill="lightgray", pen="1p")
 fig.plot(data=cities_world, style="s0.3c", fill="darkorange", pen="1p")
