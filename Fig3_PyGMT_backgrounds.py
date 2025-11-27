@@ -7,11 +7,11 @@ with fig.subplot(
     nrows=2,
     ncols=2,
     subsize=("12c", "8.5c"),
-    autolabel="(a)+o0.15c/0.3c+gwhite@30+v",
     margins=("0.3c", "0.2c"),
     frame="WSen",
     sharex="b",
     sharey="l",
+    autolabel="(a)+o0.15c/0.3c+gwhite@30+v",
 ):
     # Top left
     fig.basemap(region=region, projection="M?", panel=0)
