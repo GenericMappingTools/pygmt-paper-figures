@@ -5,7 +5,6 @@ import pandas as pd
 import requests
 from pygmt.params import Box
 
-url = "https://earthquake.usgs.gov/fdsnws/event/1/query"
 params = {
     "format": "csv",
     "starttime": "2000-01-01",
@@ -18,7 +17,7 @@ params = {
     "minmagnitude": 5,
     "orderby": "magnitude",
 }
-r = requests.get(url, params=params)
+r = requests.get("https://earthquake.usgs.gov/fdsnws/event/1/query", params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
 df_eqs = df_eqs[df_eqs["magType"] != "mb"]  # Focus on moment magnitudes
 
