@@ -1,13 +1,13 @@
-import pygmt
 import geopandas as gpd
+import pygmt
 
 provider = "https://naciscdn.org/naturalearth/"
 world = gpd.read_file(f"{provider}50m/cultural/ne_50m_admin_0_countries.zip")
 world["POP_EST"] *= 1e-6
 rivers = gpd.read_file(f"{provider}110m/physical/ne_110m_rivers_lake_centerlines.zip")
 cities = gpd.read_file(f"{provider}110m/cultural/ne_110m_populated_places_simple.zip")
-cities_small = cities[cities["worldcity"]!=1]  # Smaller cities
-cities_world = cities[cities["worldcity"]==1]  # Larger (world) cities
+cities_small = cities[cities["worldcity"] != 1]  # Smaller cities
+cities_world = cities[cities["worldcity"] == 1]  # Larger (world) cities
 
 fig = pygmt.Figure()
 fig.basemap(region=[-19.5, 53, -38, 37.5], projection="M15c", frame=True)
