@@ -12,9 +12,9 @@ cities_world = cities[cities["worldcity"] == 1].copy()  # Larger (world) cities
 fig = pygmt.Figure()
 fig.basemap(region=[-19.5, 53, -38, 37.5], projection="M15c", frame=True)
 
-pygmt.makecpt(cmap="bilbao", series=(0, 100))
+pygmt.makecpt(cmap="bilbao", series=(0, 200))
 fig.plot(data=world, pen="1p,gray50", fill="+z", cmap=True, aspatial="Z=POP_EST")
-fig.colorbar(frame="x10f5+lPopulation (millions)", position="+ef0.3c")
+fig.colorbar(frame="x10f5+lPopulation (millions)")
 
 fig.plot(data=rivers, pen="1.5p,darkblue")
 
