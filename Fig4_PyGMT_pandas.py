@@ -1,7 +1,7 @@
 import io
 
-import pygmt
 import pandas as pd
+import pygmt
 import requests
 from pygmt.params import Box
 
@@ -16,8 +16,10 @@ params = {
 r = requests.get("https://earthquake.usgs.gov/fdsnws/event/1/query", params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
 df_eqs = df_eqs[
-    (df_eqs["longitude"] >= 91) & (df_eqs["longitude"] <= 134)
-    & (df_eqs["latitude"] >= -22) & (df_eqs["latitude"] <= 19)
+    (df_eqs["longitude"] >= 91)
+    & (df_eqs["longitude"] <= 134)
+    & (df_eqs["latitude"] >= -22)
+    & (df_eqs["latitude"] <= 19)
     & (df_eqs["magType"] != "mb")
 ]
 
