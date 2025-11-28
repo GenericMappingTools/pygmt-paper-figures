@@ -54,13 +54,13 @@ fig = pygmt.Figure()
 fig.basemap(region=[-19.5, 52, -37, 38], projection="M15c", frame="+n")
 
 pygmt.makecpt(cmap="bilbao", series=(0, 200))
-fig.plot(data=africa[["geometry", "POP_EST"]], pen="0.8p,gray50", fill="+z", cmap=True, aspatial="Z=POP_EST")
+fig.plot(data=africa, pen="0.8p,gray50", fill="+z", cmap=True, aspatial="Z=POP_EST")
 fig.colorbar(frame="x20f10+lPopulation (millions)", position="jML+o3c/-3.5c+w7.5c+ml")
 
 fig.plot(data=rivers["geometry"], pen="1.5p,dodgerblue4")
 
-fig.plot(data=cities_small["geometry"], style="s0.2c", fill="lightgray", pen="1p")
-fig.plot(data=cities_large["geometry"], style="s0.3c", fill="darkorange", pen="1p")
+fig.plot(data=cities_small, style="s0.2c", fill="lightgray", pen="1p")
+fig.plot(data=cities_large, style="s0.3c", fill="darkorange", pen="1p")
 fig.text(
     x=cities_large.geometry.x,
     y=cities_large.geometry.y,
