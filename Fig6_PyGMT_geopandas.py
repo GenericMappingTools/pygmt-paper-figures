@@ -47,11 +47,7 @@ world["POP_EST"] *= 1e-6
 africa = world[world["CONTINENT"] == "Africa"].copy()
 rivers = gpd.read_file(f"{provider}/110m/physical/ne_110m_rivers_lake_centerlines.zip")
 cities = gpd.read_file(f"{provider}/110m/cultural/ne_110m_populated_places_simple.zip")
-cities_small = cities[cities["worldcity"] != 1].copy()
-cities_north = cities_small.cx[-19.5:14, 16:37].copy()
-cities_middle = cities_small.cx[-19.5:40, 15:16].copy()
-cities_south = cities_small.cx[:, -36.5:15].copy()
-cities_africa = pd.concat([cities_north, cities_south, cities_middle])
+cities_africa = gpd.sjoin(cities, africa, how="inner")
 cities_large = cities[cities["worldcity"] == 1].copy()
 cities_large = cities_large.cx[-19.5:40, -36.5:37].copy()
 
