@@ -33,10 +33,10 @@ fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"])
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
+    style="c",
     size=0.005 * 2**df_eqs.mag,
     fill=df_eqs.depth,
     cmap=True,
-    style="c",
     pen="gray10",
 )
 # Add legend for size-coding
