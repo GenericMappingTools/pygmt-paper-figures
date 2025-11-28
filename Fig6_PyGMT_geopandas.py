@@ -41,7 +41,7 @@ import geopandas as gpd
 import pygmt
 
 provider = "https://naciscdn.org/naturalearth"
-world = gpd.read_file(f"{provider}/50m/cultural/ne_50m_admin_0_countries.zip")
+world = gpd.read_file(f"{provider}/110m/cultural/ne_110m_admin_0_countries.zip")
 world["POP_EST"] *= 1e-6
 africa = world[world["CONTINENT"] == "Africa"].copy()
 rivers = gpd.read_file(f"{provider}/110m/physical/ne_110m_rivers_lake_centerlines.zip")
