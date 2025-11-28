@@ -38,7 +38,6 @@ fig.savefig(fname="Fig6_PyGMT_geopandas.png")
 
 # %%
 import geopandas as gpd
-import pandas as pd
 import pygmt
 
 provider = "https://naciscdn.org/naturalearth"
