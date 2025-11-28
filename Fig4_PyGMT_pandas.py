@@ -29,7 +29,6 @@ fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (moment magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 700], reverse=True, transparency=30)
-fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"])
 fig.plot(
     x=df_eqs.longitude,
     y=df_eqs.latitude,
@@ -39,6 +38,7 @@ fig.plot(
     cmap=True,
     pen="gray10",
 )
+fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"])
 # Add legend for size-coding
 legend = io.StringIO(
     "\n".join(f"S 0.4 c {0.005 * 2**mag:.2f} - 1p 1 Mw {mag}" for mag in [5, 6, 7])
