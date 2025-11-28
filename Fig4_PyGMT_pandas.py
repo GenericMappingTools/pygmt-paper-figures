@@ -20,14 +20,13 @@ df_eqs = df_eqs[
     & (df_eqs["longitude"] <= 134)
     & (df_eqs["latitude"] >= -22)
     & (df_eqs["latitude"] <= 19)
-    & (df_eqs["magType"] != "mb")
 ]
 
 fig = pygmt.Figure()
 fig.basemap(region=[91, 134, -22, 19], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
-# Plot epicenters with color (hypocentral depth) or size (moment magnitude)
+# Plot epicenters with color (hypocentral depth) or size (magnitude)
 pygmt.makecpt(cmap="SCM/navia", series=[0, 700], reverse=True, transparency=30)
 fig.plot(
     x=df_eqs.longitude,
@@ -41,17 +40,17 @@ fig.plot(
 fig.colorbar(frame=["xaf+lHypocentral depth", "y+lkm"])
 # Add legend for size-coding
 legend = io.StringIO(
-    "\n".join(f"S 0.4 c {0.005 * 2**mag:.2f} - 1p 1 Mw {mag}" for mag in [5, 6, 7])
+    "\n".join(f"S 0.4 c {0.005 * 2**mag:.2f} - 1p 1 M {mag}" for mag in [5, 6, 7])
 )
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white", pen="black"))
 
-# Add histogram for moment magnitude distribution
+# Add histogram for magnitude distribution
 with fig.inset(position="jBL+w7c/4c+o0.2c", margin=(1.2, 0.2, 0.9, 0.2), box=True):
     with pygmt.config(FONT="8p"):
         fig.histogram(
             region=[4.8, 10.2, 0, 0],
             projection="X?/?",
-            frame=["WSrt", "xa1f0.2+lMw", "yaf+lCounts"],
+            frame=["WSrt", "xa1f0.2+lM", "yaf+lCounts"],
             data=df_eqs.mag,
             series=0.2,
             fill="darkgray",
