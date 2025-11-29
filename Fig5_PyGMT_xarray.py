@@ -24,7 +24,7 @@ fig.grdimage(
     frame="g30",
 )
 fig.colorbar(
-    frame=["xa2000f1000+lElevation of Mars", "y+lm"], position="+e0.3c+o-7c/1c"
+    frame=["xa2000f1000+lElevation of Mars", "y+lm"], position="+e0.3c+o-6.25c/0.2c+ml"
 )
 fig.show()
 fig.savefig(fname="Fig5_PyGMT_xarray.png")
