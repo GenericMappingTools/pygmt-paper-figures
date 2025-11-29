@@ -11,7 +11,6 @@ params = {
     "endtime": "2025-10-30",
     "mindepth": 70,
     "minmagnitude": 5,
-    "orderby": "magnitude",
 }
 r = requests.get("https://earthquake.usgs.gov/fdsnws/event/1/query", params=params)
 df_eqs = pd.read_csv(io.StringIO(r.text))
@@ -20,7 +19,7 @@ df_eqs = df_eqs[
     & (df_eqs["longitude"] <= 134)
     & (df_eqs["latitude"] >= -22)
     & (df_eqs["latitude"] <= 19)
-]
+].sort_values(by="mag", ascending=False)
 
 fig = pygmt.Figure()
 fig.basemap(region=[91, 134, -22, 19], projection="M15c", frame=True)
