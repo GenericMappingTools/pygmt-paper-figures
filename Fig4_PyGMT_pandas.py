@@ -49,7 +49,7 @@ with fig.inset(position="jBL+w7c/4c+o0.2c", margin=(1.2, 0.2, 0.9, 0.2), box=Tru
         fig.histogram(
             region=[4.8, 9.2, 0, 0],
             projection="X?/?",
-            frame=["WSrt", "xa1f0.2+lM", "yaf+lCounts"],
+            frame=["WSrt", "xa1f0.2+lMagnitude M", "yaf+lCounts"],
             data=df_eqs.mag,
             series=0.2,
             fill="darkgray",
