@@ -13,8 +13,6 @@ ports = gpd.read_file(f"{provider}/10m/cultural/ne_10m_ports.zip")
 ports = ports.cx[-87.94:-87.52, 41.64:42.02]
 railroads = gpd.read_file(f"{provider}/10m/cultural/ne_10m_railroads.zip")
 railroads = railroads.cx[-87.94:-87.52, 41.64:42.02]
-# rivers = gpd.read_file(f"{provider}/10m/physical/ne_10m_rivers_lake_centerlines.zip")
-# rivers = rivers.cx[-87.94:-87.52, 41.64:42.02]
 
 # %%
 fig = pygmt.Figure()
@@ -23,28 +21,27 @@ fig.coast(shorelines=True, rivers="1/1p,blue")
 
 pygmt.makecpt(cmap="bilbao", series=[gdf["population"].min(), gdf["population"].max()])
 fig.plot(data=gdf, pen="0.3p,gray10", fill="+z", cmap=True, aspatial="Z=population")
-fig.colorbar(frame="xaf+lPopulation in Chicago", position="jTR+o0.8c/0.3c+w6c+ml")
 
 fig.plot(data=railroads["geometry"], pen="2p,black")
 fig.plot(data=railroads["geometry"], pen="1p,white,2_2")
 
-# fig.plot(data=rivers["geometry"], pen="1p,steelblue")
-
-fig.plot(data=ports["geometry"], style="i0.35c", fill="steelblue", pen="0.8p,gray10", label="port")
-fig.plot(data=airports["geometry"], style="t0.35c", fill="darkorange", pen="0.8p,gray10", label="airport")
+fig.plot(data=cities["geometry"], style="s0.35c", fill="red", pen="1p", label="city")
+fig.plot(data=ports["geometry"], style="i0.35c", fill="steelblue", pen="1p", label="port")
+fig.plot(data=airports["geometry"], style="t0.35c", fill="darkorange", pen="1p", label="airport")
 fig.text(
     x=airports.geometry.x,
     y=airports.geometry.y,
     text=airports["name"],
-    offset="0c/-0.25c",
+    offset="-0.25c",
     justify="TL",
     font="8p,Helvetica-Bold",
     fill="white@30",
-    pen="0.5p,darkorange",
+    pen="0.8p,darkorange",
     clearance="0.08c+tO",
 )
-fig.plot(data=cities["geometry"], style="s0.3c", fill="red", pen="0.8p,gray10", label="city")
-fig.legend(position="jBL+o0.2c+l1.5", box=True)
+
+fig.colorbar(frame="xaf+lPopulation in Chicago", position="jML+o0.95c/-2c+w7c+ml", box="+c0.5c+gwhite")
+fig.legend(position="jTR+o0.2c+l1.5", box=True)
 
 fig.show()
 fig.savefig(fname="Fig6_PyGMT_geopandas_chicago.png")
