@@ -47,7 +47,7 @@ fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white", pen="blac
 with fig.inset(position="jBL+w7c/4c+o0.2c", margin=(1.2, 0.2, 0.9, 0.2), box=True):
     with pygmt.config(FONT="8p"):
         fig.histogram(
-            region=[4.8, 10.2, 0, 0],
+            region=[4.8, 9.2, 0, 0],
             projection="X?/?",
             frame=["WSrt", "xa1f0.2+lM", "yaf+lCounts"],
             data=df_eqs.mag,
