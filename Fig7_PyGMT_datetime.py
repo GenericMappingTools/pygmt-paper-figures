@@ -2,6 +2,8 @@ import datetime
 
 import pandas as pd
 import pygmt
+from pygmt.params import Box
+
 
 fig = pygmt.Figure()
 
@@ -27,8 +29,7 @@ for wrapper, file, color in zip(
     fig.plot(x=df["Date"], y=df["Stars"], fill=color, style="a0.35c", label=wrapper)
 
 fig.legend(
-    position="jTL+o0.1c+w2.3",
-    box=pygmt.params.Box(fill="gray95", pen="0.5p,gray50", radius="3p"),
+    position="jTL+o0.1c+w2.3", box=Box(fill="gray95", pen="0.5p,gray50", radius="3p"),
 )
 
 fig.show()
