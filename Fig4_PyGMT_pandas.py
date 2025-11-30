@@ -18,11 +18,11 @@ df_eqs = df_eqs[
     (df_eqs["longitude"] >= 91)
     & (df_eqs["longitude"] <= 134)
     & (df_eqs["latitude"] >= -22)
-    & (df_eqs["latitude"] <= 19)
+    & (df_eqs["latitude"] <= 18)
 ].sort_values(by="mag", ascending=False)
 
 fig = pygmt.Figure()
-fig.basemap(region=[91, 134, -22, 19], projection="M15c", frame=True)
+fig.basemap(region=[91, 134, -22, 18], projection="M15c", frame=True)
 fig.coast(land="gray95", shorelines="gray50")
 
 # Plot epicenters with color (hypocentral depth) or size (magnitude)
@@ -44,18 +44,17 @@ legend = io.StringIO(
 fig.legend(spec=legend, position="jBR+o0.2c+l2", box=Box(fill="white", pen="black"))
 
 # Add histogram for magnitude distribution
-with fig.inset(position="jBL+w7c/4c+o0.2c", margin=(1.2, 0.2, 0.9, 0.2), box=True):
-    with pygmt.config(FONT="8p"):
-        fig.histogram(
-            region=[4.8, 9.2, 0, 0],
-            projection="X?/?",
-            frame=["WSrt", "xa1f0.2+lMagnitude M", "yaf+lCounts"],
-            data=df_eqs.mag,
-            series=0.2,
-            fill="darkgray",
-            pen="lightgray",
-            histtype=0,
-        )
+with fig.inset(position="jBL+w7c/4c+o0.2c", margin=(1.3, 0.2, 1.1, 0.2), box=True):
+    fig.histogram(
+        region=[4.8, 9.2, 0, 0],
+        projection="X?/?",
+        frame=["WSrt", "xa1f0.2+lMagnitude M", "yaf+lCounts"],
+        data=df_eqs.mag,
+        series=0.2,
+        fill="darkgray",
+        pen="lightgray",
+        histtype=0,
+    )
 
 fig.show()
 fig.savefig("Fig4_PyGMT_pandas.png")
