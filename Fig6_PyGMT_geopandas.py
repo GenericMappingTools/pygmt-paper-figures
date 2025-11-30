@@ -1,6 +1,7 @@
 import geodatasets
 import geopandas as gpd
 import pygmt
+from pygmt.params import Box
 
 chicago = gpd.read_file(geodatasets.get_path("geoda airbnb"))
 
@@ -42,9 +43,9 @@ fig.text(
 fig.colorbar(
     frame="xaf+lPopulation in Chicago",
     position="jML+o0.95c/-1.5c+w7c+ml",
-    box="+c0.5c+ggray95",
+    box=Box(fill="gray95", clearance="0.5c"),
 )
-fig.legend(position="jTR+o0.2c+l1.7", box="+gwhite@30+p1p")
+fig.legend(position="jTR+o0.2c+l1.7", box=Box(fill="white@30", pen="0.5p,gray50"))
 
 fig.show()
 fig.savefig(fname="Fig6_PyGMT_geopandas_chicago.png")
