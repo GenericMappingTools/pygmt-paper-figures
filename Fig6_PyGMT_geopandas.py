@@ -16,17 +16,17 @@ railroads = railroads.cx[-87.94:-87.52, 41.64:42.02]
 
 # %%
 fig = pygmt.Figure()
-fig.basemap(region=gdf.total_bounds[[0, 2, 1, 3]], projection="M10c", frame="+n")
-fig.coast(shorelines=True, rivers="1/1p,blue")
+fig.basemap(region=gdf.total_bounds[[0, 2, 1, 3]], projection="M10c", frame=0)
+fig.coast(shorelines=True, lakes="lightblue", land="gray95")
 
 pygmt.makecpt(cmap="bilbao", series=[gdf["population"].min(), gdf["population"].max()])
-fig.plot(data=gdf, pen="0.3p,gray10", fill="+z", cmap=True, aspatial="Z=population")
+fig.plot(data=gdf, pen="0.5p,gray30", fill="+z", cmap=True, aspatial="Z=population")
 
 fig.plot(data=railroads["geometry"], pen="2p,black")
 fig.plot(data=railroads["geometry"], pen="1p,white,2_2")
 
-fig.plot(data=cities["geometry"], style="s0.35c", fill="red", pen="1p", label="city")
-fig.plot(data=ports["geometry"], style="i0.35c", fill="steelblue", pen="1p", label="port")
+fig.plot(data=cities["geometry"], style="s0.32c", fill="red", pen="1p", label="city")
+fig.plot(data=ports["geometry"], style="i0.35c", fill="steelblue", pen="1p", label="harbor")
 fig.plot(data=airports["geometry"], style="t0.35c", fill="darkorange", pen="1p", label="airport")
 fig.text(
     x=airports.geometry.x,
@@ -40,8 +40,12 @@ fig.text(
     clearance="0.08c+tO",
 )
 
-fig.colorbar(frame="xaf+lPopulation in Chicago", position="jML+o0.95c/-2c+w7c+ml", box="+c0.5c+gwhite")
-fig.legend(position="jTR+o0.2c+l1.5", box=True)
+fig.colorbar(
+    frame="xaf+lPopulation in Chicago",
+    position="jML+o0.95c/-1.5c+w7c+ml",
+    box="+c0.5c+ggray95",
+)
+fig.legend(position="jTR+o0.2c+l1.7", box="+gwhite@30+p1p")
 
 fig.show()
 fig.savefig(fname="Fig6_PyGMT_geopandas_chicago.png")
