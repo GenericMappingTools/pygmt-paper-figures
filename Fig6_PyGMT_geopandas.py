@@ -2,25 +2,24 @@ import geodatasets
 import geopandas as gpd
 import pygmt
 
-gdf = gpd.read_file(geodatasets.get_path("geoda airbnb"))
+chicago = gpd.read_file(geodatasets.get_path("geoda airbnb"))
 
 provider = "https://naciscdn.org/naturalearth"
-cities = gpd.read_file(f"{provider}/10m/cultural/ne_10m_populated_places_simple.zip")
-cities = cities.cx[-87.94:-87.52, 41.64:42.02]
-airports = gpd.read_file(f"{provider}/10m/cultural/ne_10m_airports.zip")
-airports = airports.cx[-87.94:-87.52, 41.64:42.02]
-ports = gpd.read_file(f"{provider}/10m/cultural/ne_10m_ports.zip")
-ports = ports.cx[-87.94:-87.52, 41.64:42.02]
 railroads = gpd.read_file(f"{provider}/10m/cultural/ne_10m_railroads.zip")
+airports = gpd.read_file(f"{provider}/10m/cultural/ne_10m_airports.zip")
+cities = gpd.read_file(f"{provider}/10m/cultural/ne_10m_populated_places_simple.zip")
+ports = gpd.read_file(f"{provider}/10m/cultural/ne_10m_ports.zip")
 railroads = railroads.cx[-87.94:-87.52, 41.64:42.02]
+airports = airports.cx[-87.94:-87.52, 41.64:42.02]
+cities = cities.cx[-87.94:-87.52, 41.64:42.02]
+ports = ports.cx[-87.94:-87.52, 41.64:42.02]
 
-# %%
 fig = pygmt.Figure()
-fig.basemap(region=gdf.total_bounds[[0, 2, 1, 3]], projection="M10c", frame=0)
+fig.basemap(region=chicago.total_bounds[[0, 2, 1, 3]], projection="M10c", frame="+n")
 fig.coast(shorelines=True, lakes="lightblue", land="gray95")
 
-pygmt.makecpt(cmap="bilbao", series=[gdf["population"].min(), gdf["population"].max()])
-fig.plot(data=gdf, pen="0.5p,gray30", fill="+z", cmap=True, aspatial="Z=population")
+pygmt.makecpt(cmap="bilbao", series=[chicago["population"].min(), chicago["population"].max()])
+fig.plot(data=chicago, pen="0.5p,gray30", fill="+z", cmap=True, aspatial="Z=population")
 
 fig.plot(data=railroads["geometry"], pen="2p,black")
 fig.plot(data=railroads["geometry"], pen="1p,white,2_2")
