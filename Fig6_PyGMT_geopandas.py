@@ -74,7 +74,8 @@ fig = pygmt.Figure()
 fig.basemap(region=chicago.total_bounds[[0, 2, 1, 3]], projection="M10c", frame="+n")
 fig.coast(shorelines=True, lakes="lightblue", land="gray95")
 
-pygmt.makecpt(cmap="bilbao", series=[chicago["population"].min(), chicago["population"].max()])
+pygmt.makecpt(cmap="bilbao", series=[0, chicago["population"].max()])
+
 fig.plot(data=chicago, pen="0.5p,gray30", fill="+z", cmap=True, aspatial="Z=population")
 
 fig.plot(data=railroads["geometry"], pen="2p,black")
