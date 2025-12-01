@@ -9,7 +9,7 @@ with pygmt.config(PROJ_ELLIPSOID="mars"):
 fig = pygmt.Figure()
 pygmt.makecpt(cmap="batlow", series=[-6500, 6500])
 fig.grdimage(
-    mars_filter, cmap=True, shading=mars_grad, projection="G270/20/12c", frame="g30",
+    mars_filter, cmap=True, shading=mars_grad, projection="G-90/20/12c", frame="g30",
 )
 fig.shift_origin(xshift="w+0.5c")
 fig.grdimage(
