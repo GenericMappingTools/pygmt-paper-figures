@@ -16,7 +16,7 @@ fig.grdimage(
     mars_filter, cmap=True, shading=mars_grad, projection="G90/-20/12c", frame="g30",
 )
 fig.colorbar(
-    frame=["xa2000f1000+lElevation of Mars", "y+lm"], position="+e0.3c+o-6.25c/0.2c+ml"
+    frame=["xa2000f1000+lElevation", "y+lm"], position="+e0.3c+o-6.25c/0.2c+ml"
 )
 fig.show()
 fig.savefig(fname="Fig5_PyGMT_xarray.png")
