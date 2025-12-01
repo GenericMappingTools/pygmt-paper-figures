@@ -16,7 +16,7 @@ fig.basemap(
 for wrapper, file, color in zip(
     ["GMT", "GMT/MEX", "GMT.jl", "PyGMT"],
     ["gmt", "gmtmex", "gmtjl", "pygmt"],
-    ["238/86/52", "253/131/68", "170/121/193", "63/124/173"],
+    ["238/86/52", "253/131/68", "149/88/178", "48/105/152"],
     strict=False,
 ):
     df = pd.read_csv(f"star_history_{file}.csv")
