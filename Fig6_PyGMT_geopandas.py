@@ -1,3 +1,58 @@
+import geopandas as gpd
+import pygmt
+
+provider = "https://naciscdn.org/naturalearth"
+states = gpd.read_file(f"{provider}/110m/cultural/ne_110m_admin_1_states_provinces.zip")
+states["area_sqkm"] = states.geometry.to_crs(epsg=6933).area / 10 ** 9
+states = states[states["name"] != "Alaska"]
+rivers = gpd.read_file(f"{provider}/50m/physical/ne_50m_rivers_lake_centerlines.zip")
+rivers = rivers.cx[-126:-66, 24.9:49.1]
+cities = gpd.read_file(f"{provider}/110m/cultural/ne_110m_populated_places_simple.zip")
+cities = cities.cx[-126:-66, 24.9:49.1]
+cities_large = cities[cities["worldcity"] == 1].copy()
+cities_large = cities_large.cx[-126:-66, 24.8:43]
+cities_small = cities[cities["worldcity"] != 1].copy()
+cities_small = cities_small.cx[-126:-66, 26:45]
+
+fig = pygmt.Figure()
+fig.basemap(
+    projection="L-96/35/33/41/12c", region=[-126, -66.5, 24.9, 49.1], frame="+n"
+)
+# fig.coast(shorelines="1/0.1p,gray80", land="gray95")
+
+pygmt.makecpt(cmap="bilbao", series=[0, states["area_sqkm"].max()])
+fig.plot(
+    data=states[["geometry", "area_sqkm"]],
+    cmap=True,
+    pen="0.2p,gray50",
+    fill="+z",
+    aspatial="Z=area_sqkm",
+)
+fig.colorbar(
+    frame="xaf+lArea (1000 km@+2@+)", position="jBL+h+o1.4c/0.6c+w3.5c/0.17c+ml"
+)
+
+fig.plot(data=rivers["geometry"], pen="0.5p,steelblue")
+
+fig.plot(data=cities_small, style="s0.15c", fill="lightgray", pen="0.5p")
+fig.plot(data=cities_large, style="s0.17c", fill="darkorange", pen="0.5p")
+fig.text(
+    x=cities_large.geometry.x,
+    y=cities_large.geometry.y,
+    text=cities_large["name"],
+    offset="0.35c/0.2c",
+    justify="BC",
+    font="4.5p,Helvetica-Bold",
+    fill="white@30",
+    pen="0.2p,darkorange",
+    clearance="0.05c+tO",
+)
+
+fig.show()
+fig.savefig(fname="Fig6_PyGMT_geopandas_usa.png")
+
+
+# %%
 import geodatasets
 import geopandas as gpd
 import pygmt
