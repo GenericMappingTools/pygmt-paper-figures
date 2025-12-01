@@ -13,10 +13,11 @@ fig.basemap(
     frame=["x+lYear", "ya100f50+lGitHub stars"],
 )
 
-for wrapper, file, color in zip(
+for wrapper, file, color, symbol in zip(
     ["GMT", "GMT/MEX", "GMT.jl", "PyGMT"],
     ["gmt", "gmtmex", "gmtjl", "pygmt"],
     ["238/86/52", "253/131/68", "149/88/178", "48/105/152"],
+    ["C", "T", "I", "A"],
     strict=False,
 ):
     df = pd.read_csv(f"star_history_{file}.csv")
@@ -26,7 +27,7 @@ for wrapper, file, color in zip(
     )
 
     fig.plot(x=df["Date"], y=df["Stars"], pen=color)
-    fig.plot(x=df["Date"], y=df["Stars"], fill=color, style="a0.35c", label=wrapper)
+    fig.plot(x=df["Date"], y=df["Stars"], fill=color, style=f"{symbol}0.2c", label=wrapper)
 
 fig.legend(
     position="jTL+o0.1c+w2.3", box=Box(fill="gray95", pen="0.5p,gray50", radius="3p"),
