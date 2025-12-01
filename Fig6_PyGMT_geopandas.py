@@ -32,7 +32,7 @@ fig.colorbar(
     frame="xaf+lArea (1000 km@+2@+)", position="jBL+h+o1.4c/0.6c+w3.5c/0.17c+ml"
 )
 
-fig.plot(data=rivers["geometry"], pen="0.5p,steelblue")
+fig.plot(data=rivers["geometry"], pen="0.5p,dodgerblue4")
 
 fig.plot(data=cities_small, style="s0.15c", fill="lightgray", pen="0.5p")
 fig.plot(data=cities_large, style="s0.17c", fill="darkorange", pen="0.5p")
