@@ -49,10 +49,14 @@ fig.basemap(
 )
 
 for wrapper, file, color, symbol in zip(
-    ["GMT", "GMT/MEX", "GMT.jl", "PyGMT"],
-    ["gmt", "gmtmex", "gmt.jl", "pygmt"],
-    ["238/86/52", "253/131/68", "149/88/178", "48/105/152"],
-    ["C", "T", "I", "A"],
+    # ["GMT", "GMT/MEX", "GMT.jl", "PyGMT"],
+    # ["gmt", "gmtmex", "gmt.jl", "pygmt"],
+    # ["238/86/52", "253/131/68", "149/88/178", "48/105/152"],
+    # ["C", "T", "I", "A"],
+    ["GMT", "PyGMT", "GMT.jl", "GMT/MEX"],
+    ["gmt", "pygmt", "gmt.jl", "gmtmex"],
+    ["238/86/52", "48/105/152", "149/88/178", "253/131/68"],
+    ["C", "A", "I", "T"],
     strict=False,
 ):
     stars = pd.read_csv(f"star_history_github_{file}.csv", sep=";")
