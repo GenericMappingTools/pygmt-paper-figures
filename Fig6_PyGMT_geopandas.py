@@ -35,7 +35,7 @@ fig.text(
 )
 
 fig.show()
-fig.savefig(fname="Fig6_PyGMT_geopandas_usa.png")
+fig.savefig(fname="Fig6_PyGMT_geopandas.png")
 
 
 # %%
