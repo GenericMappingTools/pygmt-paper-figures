@@ -16,7 +16,7 @@ fig.basemap(projection="L-96/35/33/41/12c", region=[-126, -66, 25, 49], frame="+
 
 pygmt.makecpt(cmap="bilbao", series=[0, states["area_sqkm"].max()])
 fig.plot(data=states, cmap=True, pen="0.2p,gray50", fill="+z", aspatial="Z=area_sqkm")
-fig.colorbar(frame="xaf+lArea (1000 km@+2@+)", position="jRB+o1.9c/0.3c+w2.8c/0.12c+ml")
+fig.colorbar(frame="xaf+lArea (1000 km@+2@+)", position="jRB+o1.9c/0.2c+w3c/0.15c+ml")
 
 fig.plot(data=rivers, pen="0.5p,dodgerblue4")
 
@@ -33,7 +33,7 @@ fig.text(
     clearance="0.05c+tO",
 )
 
-# Add Alaska and Hawaii separately
+# Add Alaska and Hawaii separately in lower left corner
 for xshift, region in zip(["0.9c", "2.3c"], [[172, 230, 51, 72], [-168, -154, 18, 29]]):
     with fig.shift_origin(xshift=xshift):
         fig.plot(
