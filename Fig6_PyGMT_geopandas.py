@@ -32,25 +32,19 @@ fig.text(
     pen="0.2p,darkorange",
     clearance="0.05c+tO",
 )
-with fig.shift_origin(xshift="0.9c"):
-    fig.plot(
-        data=states,
-        region=[172, 230, 51, 72],
-        projection="M2.5c",
-        cmap=True,
-        pen="0.2p,gray50",
-        fill="+z",
-        aspatial="Z=area_sqkm"
-    )
-with fig.shift_origin(xshift="2.3c"):
-    fig.plot(
-        data=states,
-        region=[-168, -154, 18, 29],
-        projection="M2.5c",
-        cmap=True,
-        pen="0.2p,gray50",
-        fill="+z",
-        aspatial="Z=area_sqkm"
-    )
+
+# Add Alaska and Hawaii separately
+for xshift, region in zip(["0.9c", "2.3c"], [[172, 230, 51, 72], [-168, -154, 18, 29]]):
+    with fig.shift_origin(xshift=xshift):
+        fig.plot(
+            data=states,
+            region=region,
+            projection="M2.5c",
+            cmap=True,
+            pen="0.2p,gray50",
+            fill="+z",
+            aspatial="Z=area_sqkm"
+        )
+
 fig.show()
 fig.savefig(fname="Fig6_PyGMT_geopandas.png")
