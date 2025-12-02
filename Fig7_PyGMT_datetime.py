@@ -55,7 +55,7 @@ for wrapper, file, color, symbol in zip(
     # ["C", "T", "I", "A"],
     ["GMT", "PyGMT", "GMT.jl", "GMT/MEX"],
     ["gmt", "pygmt", "gmt.jl", "gmtmex"],
-    ["238/86/52", "48/105/152", "149/88/178", "253/131/68"],
+    ["238/86/52", "48/105/152", "149/88/178", "230/51/51"],
     ["C", "A", "I", "T"],
     strict=False,
 ):
