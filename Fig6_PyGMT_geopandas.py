@@ -33,7 +33,7 @@ fig.text(
     clearance="0.05c+tO",
 )
 
-# Add Alaska and Hawaii separately in lower left corner
+# Add Alaska and Hawaii separately in the lower left corner
 for xshift, region in zip(["0.9c", "2.3c"], [[172, 230, 51, 72], [-168, -154, 18, 29]]):
     with fig.shift_origin(xshift=xshift):
         fig.plot(
