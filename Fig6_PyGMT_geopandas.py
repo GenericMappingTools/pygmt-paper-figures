@@ -6,10 +6,11 @@ states = gpd.read_file(f"{provider}/50m/cultural/ne_50m_admin_1_states_provinces
 rivers = gpd.read_file(f"{provider}/50m/physical/ne_50m_rivers_lake_centerlines.zip")
 cities = gpd.read_file(f"{provider}/110m/cultural/ne_110m_populated_places_simple.zip")
 
-states = states[states["admin"] == "United States of America"].copy()
-states["area_sqkm"] = states.geometry.to_crs(epsg=6933).area / 10 ** 9
-rivers = rivers[rivers.intersects(states.union_all())].copy()
-cities = cities[cities["adm0name"] == "United States of America"].copy()
+states = states[states["admin"] == "United States of America"]
+rivers = rivers[rivers.intersects(states.union_all())]
+cities = cities[cities["adm0name"] == "United States of America"]
+
+states["area_sqkm"] = states.to_crs(epsg=6933).area / 10 ** 9
 
 fig = pygmt.Figure()
 fig.basemap(projection="L-96/35/33/41/12c", region=[-126, -66, 25, 49], frame="+n")
