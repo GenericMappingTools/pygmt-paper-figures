@@ -7,6 +7,7 @@ rivers = gpd.read_file(f"{provider}/50m/physical/ne_50m_rivers_lake_centerlines.
 cities = gpd.read_file(f"{provider}/110m/cultural/ne_110m_populated_places_simple.zip")
 
 states = states[states["admin"] == "United States of America"].copy()
+states = states[states["name"] != "Alaska"].copy()
 states["area_sqkm"] = states.geometry.to_crs(epsg=6933).area / 10 ** 9
 rivers = rivers[rivers.intersects(states.union_all())].copy()
 cities = cities[cities["adm0name"] == "United States of America"].copy()
@@ -16,7 +17,7 @@ fig.basemap(projection="L-96/35/33/41/12c", region=[-126, -66, 25, 49], frame="+
 
 pygmt.makecpt(cmap="bilbao", series=[0, states["area_sqkm"].max()])
 fig.plot(data=states, cmap=True, pen="0.2p,gray50", fill="+z", aspatial="Z=area_sqkm")
-fig.colorbar(frame="xaf+lArea (1000 km@+2@+)", position="jBL+h+o1.4c/0.6c+w3.5c+ml")
+fig.colorbar(frame="xaf+lArea (1000 km@+2@+)", position="jBL+h+o1.4c/0.6c+w3.5c/0.17+ml")
 
 fig.plot(data=rivers, pen="0.5p,dodgerblue4")
 
