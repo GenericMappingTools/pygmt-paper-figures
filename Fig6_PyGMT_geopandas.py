@@ -16,7 +16,7 @@ fig.basemap(projection="L-96/35/33/41/12c", region=[-126, -66, 25, 49], frame="+
 
 pygmt.makecpt(cmap="bilbao", series=[0, states["area_sqkm"].max()])
 fig.plot(data=states, cmap=True, pen="0.2p,gray50", fill="+z", aspatial="Z=area_sqkm")
-fig.colorbar(frame="xaf+lArea (1000 km@+2@+)", position="jBL+h+o1.4c/0.6c+w3.5c/0.17+ml")
+fig.colorbar(frame="xaf+lArea (1000 km@+2@+)", position="jRB+o1.9c/0.3c+w2.8c/0.12c+ml")
 
 fig.plot(data=rivers, pen="0.5p,dodgerblue4")
 
@@ -32,7 +32,7 @@ fig.text(
     pen="0.2p,darkorange",
     clearance="0.05c+tO",
 )
-with fig.shift_origin(xshift="0.5c"):
+with fig.shift_origin(xshift="0.9c"):
     fig.plot(
         data=states,
         region=[172, 230, 51, 72],
@@ -42,10 +42,9 @@ with fig.shift_origin(xshift="0.5c"):
         fill="+z",
         aspatial="Z=area_sqkm"
     )
-with fig.shift_origin(xshift="2.0c"):
+with fig.shift_origin(xshift="2.3c"):
     fig.plot(
         data=states,
-        # frame=True,
         region=[-168, -154, 18, 29],
         projection="M2.5c",
         cmap=True,
