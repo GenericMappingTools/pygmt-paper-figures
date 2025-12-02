@@ -33,7 +33,27 @@ fig.text(
     pen="0.2p,darkorange",
     clearance="0.05c+tO",
 )
-
+with fig.shift_origin(xshift="0.5c"):
+    fig.plot(
+        data=states,
+        region=[172, 230, 51, 72],
+        projection="M2.5c",
+        cmap=True,
+        pen="0.2p,gray50",
+        fill="+z",
+        aspatial="Z=area_sqkm"
+    )
+with fig.shift_origin(xshift="2.0c"):
+    fig.plot(
+        data=states,
+        # frame=True,
+        region=[-168, -154, 18, 29],
+        projection="M2.5c",
+        cmap=True,
+        pen="0.2p,gray50",
+        fill="+z",
+        aspatial="Z=area_sqkm"
+    )
 fig.show()
 fig.savefig(fname="Fig6_PyGMT_geopandas.png")
 
