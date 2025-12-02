@@ -45,14 +45,26 @@ from pygmt.params import Box
 chicago = gpd.read_file(geodatasets.get_path("geoda airbnb"))
 
 provider = "https://naciscdn.org/naturalearth"
-railroads = gpd.read_file(f"{provider}/10m/cultural/ne_10m_railroads.zip")
-airports = gpd.read_file(f"{provider}/10m/cultural/ne_10m_airports.zip")
-cities = gpd.read_file(f"{provider}/10m/cultural/ne_10m_populated_places_simple.zip")
-ports = gpd.read_file(f"{provider}/10m/cultural/ne_10m_ports.zip")
-railroads = railroads.cx[-87.94:-87.52, 41.64:42.02]
-airports = airports.cx[-87.94:-87.52, 41.64:42.02]
-cities = cities.cx[-87.94:-87.52, 41.64:42.02]
-ports = ports.cx[-87.94:-87.52, 41.64:42.02]
+files = {
+    "railroads": "ne_10m_railroads.zip",
+    "airports": "ne_10m_airports.zip",
+    "cities": "ne_10m_populated_places_simple.zip",
+    "ports": "ne_10m_ports.zip",
+}
+
+# define bounding box
+bbox = (-87.94, -87.52, 41.64, 42.02)
+
+data = {}
+for key, fname in files.items():
+    gdf = gpd.read_file(f"{provider}/10m/cultural/{fname}")
+    data[key] = gdf.cx[bbox[0]:bbox[1], bbox[2]:bbox[3]]
+
+railroads = data["railroads"]
+airports = data["airports"]
+cities = data["cities"]
+ports = data["ports"]
+
 
 fig = pygmt.Figure()
 fig.basemap(region=chicago.total_bounds[[0, 2, 1, 3]], projection="M10c", frame="+n")
