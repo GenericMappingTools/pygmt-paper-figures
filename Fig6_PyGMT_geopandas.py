@@ -11,14 +11,14 @@ states = states[states["admin"] == "United States of America"]
 rivers = rivers[rivers.intersects(states.union_all())]
 cities = cities[cities["adm0name"] == "United States of America"]
 
-states["area_sqkm"] = states.to_crs(epsg=6933).area / 10 ** 9
+states["area"] = states.to_crs(epsg=6933).area / 10 ** 9
 # states["area_sqkm_log"] = np.log10(states["area_sqkm"])
 
 fig = pygmt.Figure()
 fig.basemap(projection="L-96/35/33/41/12c", region=[-126, -66, 25, 49], frame="+n")
 
-pygmt.makecpt(cmap="hawaii", series=[0, states["area_sqkm"].max()], reverse=True)
-fig.plot(data=states, cmap=True, pen="0.2p,gray50", fill="+z", aspatial="Z=area_sqkm")
+pygmt.makecpt(cmap="hawaii", series=[0, states["area"].max()], reverse=True)
+fig.plot(data=states, cmap=True, pen="0.2p,gray50", fill="+z", aspatial="Z=area")
 fig.colorbar(frame="xaf+lArea (1000 km@+2@+)", position="jRB+o1.9c/0.2c+w3c/0.15c+ml")
 
 fig.plot(data=rivers, pen="0.5p,dodgerblue4")
