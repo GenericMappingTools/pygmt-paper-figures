@@ -5,7 +5,7 @@ def get_star_history(repo):
     owner = "GenericMappingTools"
     headers = {
         "Accept": "application/vnd.github.v3.star+json",
-        "Authorization": "Bearer {YOUR_GITHUB_TOKEN_HERE}",
+        # "Authorization": "Bearer {YOUR_GITHUB_TOKEN_HERE}",
     }
 
     timestamps, users = [], []
@@ -54,7 +54,7 @@ for wrapper, file, color, symbol in zip(
     ["GMT", "PyGMT", "GMT.jl", "GMT/MEX"],
     ["gmt", "pygmt", "gmt.jl", "gmtmex"],
     ["238/86/52", "48/105/152", "149/88/178", "230/51/51"],
-    ["C", "A", "I", "T"],
+    ["C", "A", "T", "I"],
     strict=False,
 ):
     df = pd.read_csv(
