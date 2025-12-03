@@ -34,17 +34,21 @@ fig.text(
     clearance="0.05c+tO",
 )
 
-# Add Alaska and Hawaii separately in the lower left corner
-for xshift, region in zip(["0.9c", "2.3c"], [[172, 230, 51, 72], [-168, -154, 18, 29]]):
+# Add the states Alaska and Hawaii separately in the lower left corner
+for name, xshift in zip(["Alaska", "Hawaii"], ["1.2c", "2.8c"]):
+    substate = states[(states["name"] == name)]
+    substate = substate.explode()
+    substate = substate[substate.to_crs(epsg=6933).area > 1.0e8].dissolve()
+    region = pygmt.info(substate, spacing=1)
     with fig.shift_origin(xshift=xshift):
         fig.plot(
-            data=states,
+            data=substate,
             region=region,
-            projection="M2.5c",
+            projection="M2c",
             cmap=True,
             pen="0.2p,gray50",
             fill="+z",
-            aspatial="Z=area_sqkm"
+            aspatial="Z=area",
         )
 
 fig.show()
