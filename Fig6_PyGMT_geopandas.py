@@ -1,6 +1,5 @@
 import geopandas as gpd
 import pygmt
-# import numpy as np
 
 provider = "https://naciscdn.org/naturalearth"
 states = gpd.read_file(f"{provider}/50m/cultural/ne_50m_admin_1_states_provinces.zip")
@@ -12,7 +11,6 @@ rivers = rivers[rivers.intersects(states.union_all())]
 cities = cities[cities["adm0name"] == "United States of America"]
 
 states["area"] = states.to_crs(epsg=6933).area / 10 ** 9
-# states["area_sqkm_log"] = np.log10(states["area_sqkm"])
 
 fig = pygmt.Figure()
 fig.basemap(projection="L-96/35/33/41/12c", region=[-126, -66, 25, 49], frame="+n")
