@@ -45,7 +45,8 @@ stars_step = 20
 fig = pygmt.Figure()
 fig.basemap(
     projection="X12c/6c",
-    region=[datetime.date(2016, 1, 1), datetime.date(2026, 12, 31), -50, 1000],
+    region=[datetime.date(2016, 1, 1), datetime.now(), -50, 1000],
+
     frame=["x+lYear", "ya100f50+lGitHub stars"],
 )
 
