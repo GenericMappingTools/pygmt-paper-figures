@@ -58,9 +58,8 @@ for wrapper, file, color, symbol in zip(
     strict=False,
 ):
     df = pd.read_csv(
-        f"star_history_github_{file}.csv",
-        sep=",",
-        parse_dates=["timestamp"],
+        f"star_history_github_{file}.csv", 
+        parse_dates=["timestamp"], 
         index_col="timestamp",
     )
     df = df.resample("6ME").count().cumsum().rename(columns={"user": "stars"})
