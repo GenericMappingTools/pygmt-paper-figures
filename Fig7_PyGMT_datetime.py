@@ -41,9 +41,7 @@ fig = pygmt.Figure()
 fig.basemap(
     projection="X12c/6c",
     region=[datetime.date(2016, 1, 1), datetime.datetime.now(), -50, 1000],
-
     frame=["x", "ya100f50+lGitHub stars"],
-
 )
 
 for wrapper, file, color, symbol in zip(
@@ -64,7 +62,7 @@ for wrapper, file, color, symbol in zip(
         x=df.index, y=df["stars"], style=f"{symbol}0.2c", fill=color, label=wrapper
     )
 fig.legend(
-    position="jTL+o0.1c+w2.3", box=Box(fill="gray95", pen="0.5p,gray50", radius="3p"),
+    position="jTL+o0.1c+w2.3", box=Box(fill="gray95", pen="0.5p,gray50", radius="3p")
 )
 
 fig.show()
