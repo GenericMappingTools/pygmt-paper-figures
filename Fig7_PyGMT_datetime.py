@@ -10,7 +10,6 @@ def get_star_history(repo):
 
     timestamps, users = [], []
     page = 1
-
     while True:
         r = requests.get(
             f"https://api.github.com/repos/{owner}/{repo}/stargazers",
@@ -25,7 +24,6 @@ def get_star_history(repo):
         users += [s["user"]["login"] for s in data]
         page += 1
     df = pd.DataFrame({"timestamp": timestamps, "user": users}).sort_values("timestamp")
-
     df.to_csv(f"star_history_github_{repo}.csv", sep=",", index=False)
 
 
@@ -38,8 +36,6 @@ import datetime
 import pandas as pd
 import pygmt
 from pygmt.params import Box
-
-stars_step = 20
 
 fig = pygmt.Figure()
 fig.basemap(
