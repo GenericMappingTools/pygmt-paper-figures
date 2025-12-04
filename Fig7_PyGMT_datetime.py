@@ -24,8 +24,7 @@ def get_star_history(repo):
         timestamps += [s["starred_at"] for s in data]  # full ISO 8601 timestamp
         users += [s["user"]["login"] for s in data]
         page += 1
-    df = pd.DataFrame({"timestamp": timestamps, "user": users})
-    df.sort_values("timestamp", inplace=True)
+    df = pd.DataFrame({"timestamp": timestamps, "user": users}).sort_values("timestamp")
 
     df.to_csv(f"star_history_github_{repo}.csv", sep=",", index=False)
 
