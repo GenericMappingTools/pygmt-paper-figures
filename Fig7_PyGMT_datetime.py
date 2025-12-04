@@ -42,7 +42,8 @@ fig.basemap(
     projection="X12c/6c",
     region=[datetime.date(2016, 1, 1), datetime.datetime.now(), -50, 1000],
 
-    frame=["x+lYear", "ya100f50+lGitHub stars"],
+    frame=["x", "ya100f50+lGitHub stars"],
+
 )
 
 for wrapper, file, color, symbol in zip(
