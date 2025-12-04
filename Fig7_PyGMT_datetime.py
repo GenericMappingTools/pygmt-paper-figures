@@ -63,7 +63,7 @@ for wrapper, file, color, symbol in zip(
         parse_dates=["timestamp"],
         index_col="timestamp",
     )
-    df = df.resample("3ME").count().cumsum().rename(columns={"user": "stars"})
+    df = df.resample("6ME").count().cumsum().rename(columns={"user": "stars"})
     fig.plot(x=df.index, y=df["stars"], pen=color)
     fig.plot(
         x=df.index, y=df["stars"], style=f"{symbol}0.2c", fill=color, label=wrapper
