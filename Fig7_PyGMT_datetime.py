@@ -20,7 +20,6 @@ def get_star_history(repo):
         data = r.json()
         if not data:
             break
-        # print(data)
 
         timestamps += [s["starred_at"] for s in data]  # full ISO 8601 timestamp
         users += [s["user"]["login"] for s in data]
