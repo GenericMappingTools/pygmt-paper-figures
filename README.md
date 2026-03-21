@@ -4,13 +4,13 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 
 ## Files
 
-- `Fig1_PyGMT_GMT_comparison.ipynb`
-- `Fig2_PyGMT_ecosystem.ipynb`
-- `Fig3_PyGMT_backgrounds.ipynb`
-- `Fig4_PyGMT_pandas.ipynb`
-- `Fig5_PyGMT_xarray.ipynb`
-- `Fig6_PyGMT_geopandas.ipynb`
-- `Fig7_PyGMT_datetime.ipynb`
+- [`Fig1_PyGMT_GMT_comparison.ipynb`](Fig1_PyGMT_GMT_comparison.ipynb)
+- [`Fig2_PyGMT_ecosystem.ipynb`](Fig2_PyGMT_ecosystem.ipynb)
+- [`Fig3_PyGMT_backgrounds.ipynb`](Fig3_PyGMT_backgrounds.ipynb)
+- [`Fig4_PyGMT_pandas.ipynb`](Fig4_PyGMT_pandas.ipynb)
+- [`Fig5_PyGMT_xarray.ipynb`](Fig5_PyGMT_xarray.ipynb)
+- [`Fig6_PyGMT_geopandas.ipynb`](Fig6_PyGMT_geopandas.ipynb)
+- [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb)
 - `star_history_github_*.csv`: cached data used by Figure 7
 
 ## Environment setup
