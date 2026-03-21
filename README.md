@@ -1,6 +1,6 @@
 # PyGMT paper figures
 
-This repository contains the notebooks and supporting data used to generate the figures for the PyGMT paper.
+This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper.
 
 ## Files
 
@@ -32,7 +32,7 @@ conda activate pygmt-paper-figures
 
 `Fig1_PyGMT_GMT_comparison.ipynb` and `Fig2_PyGMT_ecosystem.ipynb` depend on PyGMT
 features that are available on specific development branches which are not merged into
-the main branch of PyGMT.
+the main branch of PyGMT yet.
 
 Install the matching branch before running each notebook:
 
@@ -56,7 +56,7 @@ Start JupyterLab inside the activated environment:
 jupyter lab
 ```
 
-Then open the notebooks and run them with the `pygmt-paper-figures` environment.
+Then open the notebooks and run them within the `pygmt-paper-figures` environment.
 
 ## Notes
 
