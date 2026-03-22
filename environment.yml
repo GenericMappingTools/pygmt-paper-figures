@@ -5,6 +5,7 @@ channels:
 dependencies:
   - python=3.14
   - gmt=6.6.0
+  - contextily=1.7.0
   - ghostscript=10.06.0
   - geopandas=1.1
   - jupyterlab=4.5
