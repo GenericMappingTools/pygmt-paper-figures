@@ -2,12 +2,11 @@
 
 This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper:
 
-**Dongdong Tian**, Yvonne Fröhlich, Wei Ji Leong, Michael Grund,
-William Schlitzer, Max Jones, Leonardo Uieda, Joaquim Manuel Freire Luis
-
+> **Dongdong Tian**, Yvonne Fröhlich, Wei Ji Leong, Michael Grund, William Schlitzer, Max Jones, Leonardo Uieda, Joaquim Manuel Freire Luis
+> 
 > PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis
-
-*Submitted to _Geochemistry, Geophysics, Geosystems_*
+>
+> *Submitted to _Geochemistry, Geophysics, Geosystems_*
 
 ## Files
 
