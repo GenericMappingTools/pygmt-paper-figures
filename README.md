@@ -1,12 +1,19 @@
 # PyGMT paper figures
 
-This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper.
+This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper:
+
+**Dongdong Tian**, Yvonne Fröhlich, Wei Ji Leong, Michael Grund,
+William Schlitzer, Max Jones, Leonardo Uieda, Joaquim Manuel Freire Luis
+
+> PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis
+
+*Submitted to _Geochemistry, Geophysics, Geosystems_*
 
 ## Files
 
 - [`Fig1_PyGMT_GMT_comparison.ipynb`](Fig1_PyGMT_GMT_comparison.ipynb): Example comparison of GMT CLI (Bash) and PyGMT (Python) scripts
 - [`Fig2_PyGMT_ecosystem.ipynb`](Fig2_PyGMT_ecosystem.ipynb): The PyGMT ecosystem
-- [`Fig3_PyGMT_backgrounds.ipynb`](Fig3_PyGMT_backgrounds.ipynb): Different types of geographic background base maps of Iceland
+- [`Fig3_PyGMT_backgrounds.ipynb`](Fig3_PyGMT_backgrounds.ipynb): Different types of geographic background basemaps of Iceland
 - [`Fig4_PyGMT_pandas.ipynb`](Fig4_PyGMT_pandas.ipynb): Seismicity along the Andaman-Sumatra-Java Subduction Zone
 - [`Fig5_PyGMT_xarray.ipynb`](Fig5_PyGMT_xarray.ipynb): Hemispherical views of long-wavelength Mars topography
 - [`Fig6_PyGMT_geopandas.ipynb`](Fig6_PyGMT_geopandas.ipynb): Choropleth map of the population in the US
