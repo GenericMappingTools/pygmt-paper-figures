@@ -68,7 +68,7 @@ Then open the notebooks and run them within the `pygmt-paper-figures` environmen
 Notebooks in this repository are archived on Zenodo and can be cited as:
 
 > Tian, D., Fröhlich, Y., Grund, M., Schlitzer, W., & Leong, W. J. (2026).
-> Reproducible materials for "PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis" (v1.0).
+> Reproducible materials for "PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis".
 > Zenodo. https://doi.org/10.5281/zenodo.19412361
 
 ## License
