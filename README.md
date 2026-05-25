@@ -1,5 +1,7 @@
 # PyGMT paper figures
 
+![GitHub License](https://img.shields.io/github/license/GenericMappingTools/pygmt-paper-figures)
+
 This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper:
 
 > **Dongdong Tian**, Yvonne Fröhlich, Wei Ji Leong, Michael Grund, William Schlitzer, Max Jones, Leonardo Uieda, Joaquim Manuel Freire Luis
