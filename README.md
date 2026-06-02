@@ -39,9 +39,9 @@ conda activate pygmt-paper-figures
 
 ## Figure-specific note
 
-`Fig2_PyGMT_ecosystem.ipynb` depend on PyGMT features in the `pygmtlogo` branch,
-which is not merged into the main branch of PyGMT yet. Install the matching branch
-before running each notebook:
+`Fig2_PyGMT_ecosystem.ipynb` depend on PyGMT features in the `pygmtlogo` branch, which
+is not merged into the main branch of PyGMT yet. Install the matching branch before
+running each notebook:
 
 ```bash
 pip install --force-reinstall "git+https://github.com/GenericMappingTools/pygmt.git@pygmtlogo"
