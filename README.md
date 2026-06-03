@@ -1,9 +1,12 @@
 # PyGMT paper figures
 
+![GitHub License](https://img.shields.io/github/license/GenericMappingTools/pygmt-paper-figures)
+[![Digital Object Identifier for the Zenodo archive](https://zenodo.org/badge/DOI/10.5281/zenodo.19412361.svg)](https://doi.org/10.5281/zenodo.19412361)
+
 This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper:
 
 > **Dongdong Tian**, Yvonne Fröhlich, Wei Ji Leong, Michael Grund, William Schlitzer, Max Jones, Leonardo Uieda, Joaquim Manuel Freire Luis
-> 
+>
 > PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis
 >
 > *Submitted to _Geochemistry, Geophysics, Geosystems_*
@@ -25,7 +28,7 @@ These notebooks require a **development version of PyGMT**. The environment defi
 in `environment.yml` currently installs PyGMT from TestPyPI:
 
 - GMT: `6.6.0`
-- pygmt: `0.19.0.dev100`
+- pygmt: `0.19.0.dev219`
 
 Create and activate the environment:
 
@@ -36,22 +39,12 @@ conda activate pygmt-paper-figures
 
 ## Figure-specific note
 
-`Fig1_PyGMT_GMT_comparison.ipynb` and `Fig2_PyGMT_ecosystem.ipynb` depend on PyGMT
-features that are available on specific development branches which are not merged into
-the main branch of PyGMT yet.
-
-Install the matching branch before running each notebook:
-
-- `Fig1_PyGMT_GMT_comparison.ipynb`: requires the `feature/paragraph` branch
+`Fig2_PyGMT_ecosystem.ipynb` depend on PyGMT features in the `pygmtlogo` branch, which
+is not merged into the main branch of PyGMT yet. Install the matching branch before
+running each notebook:
 
 ```bash
-pip install --force-reinstall "git+https://github.com/GenericMappingTools/pygmt.git@feature/paragraph"
-```
-
-- `Fig2_PyGMT_ecosystem.ipynb`: requires the `code-pygmt-logo` branch
-
-```bash
-pip install --force-reinstall "git+https://github.com/GenericMappingTools/pygmt.git@code-pygmt-logo"
+pip install --force-reinstall "git+https://github.com/GenericMappingTools/pygmt.git@pygmtlogo"
 ```
 
 ## Running the notebooks
@@ -69,3 +62,15 @@ Then open the notebooks and run them within the `pygmt-paper-figures` environmen
 - The notebooks expect GMT to be available through the same environment.
 - Some figures download remote resources or rely on online datasets.
 - Figure outputs are typically saved as PNG files from within the notebooks.
+
+## Citation
+
+Notebooks in this repository are archived on Zenodo and can be cited as:
+
+> Tian, D., Fröhlich, Y., Grund, M., Schlitzer, W., & Leong, W. J. (2026).
+> Reproducible materials for "PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis".
+> Zenodo. https://doi.org/10.5281/zenodo.19412361
+
+## License
+
+This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
