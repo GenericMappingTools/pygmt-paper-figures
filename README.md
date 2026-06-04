@@ -1,6 +1,6 @@
 # PyGMT paper figures
 
-![GitHub License](https://img.shields.io/github/license/GenericMappingTools/pygmt-paper-figures)
+[![GitHub License](https://img.shields.io/github/license/GenericMappingTools/pygmt-paper-figures?style=flat)](https://github.com/GenericMappingTools/pygmt-paper-figures/blob/main/LICENSE)
 [![Digital Object Identifier for the Zenodo archive](https://zenodo.org/badge/DOI/10.5281/zenodo.19412361.svg)](https://doi.org/10.5281/zenodo.19412361)
 
 This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper:
