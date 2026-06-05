@@ -28,7 +28,7 @@ These notebooks require a **development version of PyGMT**. The environment defi
 in `environment.yml` currently installs PyGMT from TestPyPI:
 
 - GMT: `6.6.0`
-- pygmt: `0.19.0.dev219`
+- pygmt: `0.19.0.dev229`
 
 Create and activate the environment:
 
