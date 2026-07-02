@@ -1,15 +1,13 @@
 # PyGMT paper figures
 
 [![GitHub License](https://img.shields.io/github/license/GenericMappingTools/pygmt-paper-figures?style=flat)](https://github.com/GenericMappingTools/pygmt-paper-figures/blob/main/LICENSE)
-[![Digital Object Identifier for the Zenodo archive](https://zenodo.org/badge/DOI/10.5281/zenodo.19412361.svg)](https://doi.org/10.5281/zenodo.19412361)
+[![Digital Object Identifier for the Zenodo archive](https://img.shields.io/badge/DOI-10.5281/zenodo.19412361-blue)](https://doi.org/10.5281/zenodo.19412361)
 
 This repository contains the Jupyter notebooks and supporting data used to generate the figures presented in the PyGMT paper:
 
-> **Dongdong Tian**, Yvonne Fröhlich, Wei Ji Leong, Michael Grund, William Schlitzer, Max Jones, Leonardo Uieda, Joaquim Manuel Freire Luis
->
-> PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis
->
-> *Submitted to _Geochemistry, Geophysics, Geosystems_*
+> Tian, D., Fröhlich, Y., Leong, W. J., Grund, M., Schlitzer, W., Jones, M., Uieda, L., Luis, J. M. F. (2026).
+> PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis.
+> *Geochemistry, Geophysics, Geosystems*, 27, e2026GC013105. https://doi.org/10.1029/2026GC013105
 
 ## Files
 
