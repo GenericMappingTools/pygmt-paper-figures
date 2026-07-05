@@ -26,23 +26,13 @@ These notebooks require a **development version of PyGMT**. The environment defi
 in `environment.yml` currently installs PyGMT from TestPyPI:
 
 - GMT: `6.6.0`
-- PyGMT: `0.19.0.dev265`
+- PyGMT: `0.19.0.dev268`
 
 Create and activate the environment:
 
 ```bash
 conda env create -f environment.yml
 conda activate pygmt-paper-figures
-```
-
-## Figure-specific note
-
-`Fig2_PyGMT_ecosystem.ipynb` depend on PyGMT features in the `pygmtlogo` branch, which
-is not merged into the main branch of PyGMT yet. Install the matching branch before
-running each notebook:
-
-```bash
-pip install --force-reinstall "git+https://github.com/GenericMappingTools/pygmt.git@pygmtlogo"
 ```
 
 ## Running the notebooks
