@@ -22,7 +22,8 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 
 ## Environment setup
 
-These notebooks require GMT, PyGMT, and other dependencies to be installed in the same environment. The `environment.yml` file can be used to create a conda environment with all the required dependencies.
+These notebooks require GMT, PyGMT, and other dependencies to be installed in the same environment.
+The `environment.yml` file can be used to create a conda environment with all the required dependencies.
 
 Create and activate the environment:
 ```bash
