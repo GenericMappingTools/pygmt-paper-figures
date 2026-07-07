@@ -22,14 +22,10 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 
 ## Environment setup
 
-These notebooks require a **development version of PyGMT**. The environment definition
-in `environment.yml` currently installs PyGMT from TestPyPI:
-
-- GMT: `6.6.0`
-- PyGMT: `0.19.0.dev268`
+These notebooks require GMT, PyGMT, and other dependencies to be installed in the same environment.
+The `environment.yml` file can be used to create a conda environment with all the required dependencies.
 
 Create and activate the environment:
-
 ```bash
 conda env create -f environment.yml
 conda activate pygmt-paper-figures
@@ -47,7 +43,6 @@ Then open the notebooks and run them within the `pygmt-paper-figures` environmen
 
 ## Notes
 
-- The notebooks expect GMT to be available through the same environment.
 - Some figures download remote resources or rely on online datasets.
 - Figure outputs are typically saved as PNG files from within the notebooks.
 
