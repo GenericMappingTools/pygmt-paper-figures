@@ -20,13 +20,11 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 - [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb): GitHub star history of GMT and the wrappers
 - `star_history_github_*.csv`: Cached GitHub stars data used by Figure 7
 
-[![](https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png)](https://doi.org/10.1029/2026GC013105)
-
 [<img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png" width="600">](https://doi.org/10.1029/2026GC013105)
 
-| [Figure 1](link_to_jn) | Figure GJI | Figure 3 |
+| [Test Figure G3](link_to_jn) | Test Figure GJI | Figure 3 |
 | --- | --- | --- |
-| ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/2b2ee924-bee1-4372-969c-60915d63a342/ggge22002-fig-0001-m.jpg) | ![](https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/gji/239/1/10.1093_gji_ggae245/2/m_ggae245fig1.jpeg?Expires=1785298747&Signature=HgK5-PRe8CExourraFI6CJQ7bp-z85C5K2Cqwh2QAmO72raCTYcGlABk6ufTKHZoX8Nz8~IA~ER593sC9DjUs7VyHDGAS~gq6nERZXx1BFqwKlWVQN2PuzFNxrrV49Bo6Uye92-2O0ovJfW7ZcC0tz4aLVjNRoqHC~x0XtAHP6BzsywE83NOxw98B1Kjhr4BkWjgxey1Aitd40B7arhwe9Y3aUV4Nbmk98BqHwiaWifu3VJGCsc64RnaCKY0RuFwykzN00e4OrzFkMC~QEkt5VEO6C3jna9vqT-05yqw8auot5tQxp-670O1Y5obOQiK1TeNzdkOX5ZZCGeAj0yULQ__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA) | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/818d8d41-b83c-477c-8994-b3672dd95b41/ggge22002-fig-0003-m.jpg) |
+| <img src="https://agupubs.onlinelibrary.wiley.com/cms/asset/2b2ee924-bee1-4372-969c-60915d63a342/ggge22002-fig-0001-m.jpg" width="200"> | <img src="https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/gji/239/1/10.1093_gji_ggae245/2/m_ggae245fig1.jpeg?Expires=1785298747&Signature=HgK5-PRe8CExourraFI6CJQ7bp-z85C5K2Cqwh2QAmO72raCTYcGlABk6ufTKHZoX8Nz8~IA~ER593sC9DjUs7VyHDGAS~gq6nERZXx1BFqwKlWVQN2PuzFNxrrV49Bo6Uye92-2O0ovJfW7ZcC0tz4aLVjNRoqHC~x0XtAHP6BzsywE83NOxw98B1Kjhr4BkWjgxey1Aitd40B7arhwe9Y3aUV4Nbmk98BqHwiaWifu3VJGCsc64RnaCKY0RuFwykzN00e4OrzFkMC~QEkt5VEO6C3jna9vqT-05yqw8auot5tQxp-670O1Y5obOQiK1TeNzdkOX5ZZCGeAj0yULQ__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA" width="200"> | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/818d8d41-b83c-477c-8994-b3672dd95b41/ggge22002-fig-0003-m.jpg) |
 
 ## Environment setup
 
