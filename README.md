@@ -30,7 +30,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 
 | Figure 1 | Figure 2 | Figure 3 | Figure 4 |
 | :---: | :---: | :---: | :---: |
-| <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig1_PyGMT_GMT_comparison.png" width="200"> | <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig2_PyGMT_ecosystem.png" width="200"> | <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig3_PyGMT_backgrounds..png" width="200"> | <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig4_PyGMT_pandas.png" width="200"> |
+| <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig1_PyGMT_GMT_comparison.png" width="200"> | <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig2_PyGMT_ecosystem.png" width="200"> | <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig3_PyGMT_backgrounds.png" width="200"> | <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/Fig4_PyGMT_pandas.png" width="200"> |
 
 | Figure 5 | Figure 6 | Figure 7 |
 | :---: | :---: | :---: |
