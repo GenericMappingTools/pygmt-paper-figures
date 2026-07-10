@@ -9,18 +9,24 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 > PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis.
 > *Geochemistry, Geophysics, Geosystems*, 27, e2026GC013105. https://doi.org/10.1029/2026GC013105
 
-## Files
+## Content
+
+| Jupyter notebook | Overview |
+| --- | --- |
+| &bull;[`Fig1_PyGMT_GMT_comparison.ipynb`](Fig1_PyGMT_GMT_comparison.ipynb) <br>&nbsp;&nbsp;&nbsp;Example comparison of GMT CLI and PyGMT scripts <br> &bull;[`Fig2_PyGMT_ecosystem.ipynb`](Fig2_PyGMT_ecosystem.ipynb) <br>&nbsp;&nbsp;&nbsp;The PyGMT ecosystem <br> &bull;[`Fig3_PyGMT_backgrounds.ipynb`](Fig3_PyGMT_backgrounds.ipynb) <br>&nbsp;&nbsp;&nbsp;Different types of geographic background basemaps of Iceland <br> &bull;[`Fig4_PyGMT_pandas.ipynb`](Fig4_PyGMT_pandas.ipynb) <br>&nbsp;&nbsp;&nbsp;Seismicity along the Andaman-Sumatra-Java subduction zone <br> &bull;[`Fig5_PyGMT_xarray.ipynb`](Fig5_PyGMT_xarray.ipynb) <br>&nbsp;&nbsp;&nbsp;Hemispherical views of long-wavelength Mars topography <br> &bull;[`Fig6_PyGMT_geopandas.ipynb`](Fig6_PyGMT_geopandas.ipynb) <br>&nbsp;&nbsp;&nbsp;Choropleth map of the population in the US <br> &bull;[`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb) <br>&nbsp;&nbsp;&nbsp;GitHub star history of GMT and the wrappers <br>&nbsp;&nbsp;`star_history_github_*.csv` <br>&nbsp;&nbsp;&nbsp;Cached GitHub stars data used by Figure 7 | [<img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png" width="450">](https://doi.org/10.1029/2026GC013105) |
+
 
 - [`Fig1_PyGMT_GMT_comparison.ipynb`](Fig1_PyGMT_GMT_comparison.ipynb): Example comparison of GMT CLI (Bash) and PyGMT (Python) scripts
 - [`Fig2_PyGMT_ecosystem.ipynb`](Fig2_PyGMT_ecosystem.ipynb): The PyGMT ecosystem
 - [`Fig3_PyGMT_backgrounds.ipynb`](Fig3_PyGMT_backgrounds.ipynb): Different types of geographic background basemaps of Iceland
-- [`Fig4_PyGMT_pandas.ipynb`](Fig4_PyGMT_pandas.ipynb): Seismicity along the Andaman-Sumatra-Java Subduction Zone
+- [`Fig4_PyGMT_pandas.ipynb`](Fig4_PyGMT_pandas.ipynb): Seismicity along the Andaman-Sumatra-Java subduction zone
 - [`Fig5_PyGMT_xarray.ipynb`](Fig5_PyGMT_xarray.ipynb): Hemispherical views of long-wavelength Mars topography
 - [`Fig6_PyGMT_geopandas.ipynb`](Fig6_PyGMT_geopandas.ipynb): Choropleth map of the population in the US
 - [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb): GitHub star history of GMT and the wrappers
 - `star_history_github_*.csv`: Cached GitHub stars data used by Figure 7
 
 [<img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png" width="600">](https://doi.org/10.1029/2026GC013105)
+
 
 | [Test Figure G3](link_to_jn) | Test Figure GJI | Figure 3 |
 | --- | --- | --- |
