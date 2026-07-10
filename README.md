@@ -9,7 +9,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 > PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis.
 > *Geochemistry, Geophysics, Geosystems*, 27, e2026GC013105. https://doi.org/10.1029/2026GC013105
 
-[![](https://github.com/GenericMappingTools/pygmt-paper-figures/pygmt_paper_figures_overview_github.png)](https://doi.org/10.1029/2026GC013105)
+[![](https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png)
 
 ## Files
 
@@ -22,7 +22,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 - [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb): GitHub star history of GMT and the wrappers
 - `star_history_github_*.csv`: Cached GitHub stars data used by Figure 7
 
-|Figure 1 | Figure 2 | Figure 3 |
+| [Figure 1](Link to JN) | Figure 2 | Figure 3 |
 | --- | --- | --- |
 | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/2b2ee924-bee1-4372-969c-60915d63a342/ggge22002-fig-0001-m.jpg) | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/c4dd8aba-a0f1-477e-b977-988542856159/ggge22002-fig-0002-m.jpg) | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/818d8d41-b83c-477c-8994-b3672dd95b41/ggge22002-fig-0003-m.jpg) |
 
