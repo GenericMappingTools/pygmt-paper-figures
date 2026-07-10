@@ -22,6 +22,8 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 
 [![](https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png)](https://doi.org/10.1029/2026GC013105)
 
+[<img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png" width="100">](https://doi.org/10.1029/2026GC013105)
+
 | [Figure 1](link_to_jn) | Figure 2 | Figure 3 |
 | --- | --- | --- |
 | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/2b2ee924-bee1-4372-969c-60915d63a342/ggge22002-fig-0001-m.jpg) | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/c4dd8aba-a0f1-477e-b977-988542856159/ggge22002-fig-0002-m.jpg) | ![](https://agupubs.onlinelibrary.wiley.com/cms/asset/818d8d41-b83c-477c-8994-b3672dd95b41/ggge22002-fig-0003-m.jpg) |
