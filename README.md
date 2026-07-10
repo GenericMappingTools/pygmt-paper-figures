@@ -54,7 +54,7 @@ Then open the notebooks and run them within the `pygmt-paper-figures` environmen
 
 ## Citation
 
-Notebooks in this repository are archived on Zenodo and can be cited as:
+The notebooks in this repository are archived on Zenodo and can be cited as:
 
 > Tian, D., Fröhlich, Y., Grund, M., Schlitzer, W., & Leong, W. J. (2026).
 > Reproducible materials for "PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis".
