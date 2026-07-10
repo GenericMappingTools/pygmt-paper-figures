@@ -9,6 +9,8 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 > PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis.
 > *Geochemistry, Geophysics, Geosystems*, 27, e2026GC013105. https://doi.org/10.1029/2026GC013105
 
+[![](https://github.com/GenericMappingTools/pygmt-paper-figures/pygmt_paper_figures_overview_github.png)](https://doi.org/10.1029/2026GC013105)
+
 ## Files
 
 - [`Fig1_PyGMT_GMT_comparison.ipynb`](Fig1_PyGMT_GMT_comparison.ipynb): Example comparison of GMT CLI (Bash) and PyGMT (Python) scripts
