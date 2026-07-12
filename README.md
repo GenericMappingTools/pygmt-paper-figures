@@ -24,11 +24,6 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png" width="600">
 
 
-| Jupyter notebook | Overview |
-| --- | :---: |
-| &bull;[`Fig1_PyGMT_GMT_comparison.ipynb`](Fig1_PyGMT_GMT_comparison.ipynb) <br>&nbsp;&nbsp;&nbsp;Comparison of GMT CLI (Bash) and PyGMT (Python) scripts <br> &bull;[`Fig2_PyGMT_ecosystem.ipynb`](Fig2_PyGMT_ecosystem.ipynb) <br>&nbsp;&nbsp;&nbsp;The PyGMT ecosystem <br> &bull;[`Fig3_PyGMT_backgrounds.ipynb`](Fig3_PyGMT_backgrounds.ipynb) <br>&nbsp;&nbsp;&nbsp;Different types of geographic background basemaps of Iceland <br> &bull;[`Fig4_PyGMT_pandas.ipynb`](Fig4_PyGMT_pandas.ipynb) <br>&nbsp;&nbsp;&nbsp;Seismicity along the Andaman-Sumatra-Java subduction zone <br> &bull;[`Fig5_PyGMT_xarray.ipynb`](Fig5_PyGMT_xarray.ipynb) <br>&nbsp;&nbsp;&nbsp;Hemispherical views of long-wavelength Mars topography <br> &bull;[`Fig6_PyGMT_geopandas.ipynb`](Fig6_PyGMT_geopandas.ipynb) <br>&nbsp;&nbsp;&nbsp;Choropleth map of the population in the US <br> &bull;[`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb) with `star_history_github_*.csv` <br>&nbsp;&nbsp;&nbsp;GitHub star history of GMT and the wrappers | <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github_vertical.png" width="300"> |
-
-
 ## Environment setup
 
 These notebooks require GMT, PyGMT, and other dependencies to be installed in the same environment.
