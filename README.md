@@ -21,7 +21,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 - [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb): GitHub star history of GMT and the wrappers
 - `star_history_github_*.csv`: Cached GitHub stars data used by Figure 7
 
-![](https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png)
+![](pygmt_paper_figures_overview_github.png)
 
 
 ## Environment setup
