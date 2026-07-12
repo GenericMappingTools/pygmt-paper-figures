@@ -23,6 +23,8 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 
 <img src="https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png" width="600">
 
+![](https://github.com/GenericMappingTools/pygmt-paper-figures/blob/add-figures-readme/pygmt_paper_figures_overview_github.png)
+
 
 ## Environment setup
 
