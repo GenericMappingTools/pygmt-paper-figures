@@ -10,7 +10,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 > *Geochemistry, Geophysics, Geosystems*, 27, e2026GC013105. https://doi.org/10.1029/2026GC013105
 
 
-## Files
+## Notebooks
 
 - [`Fig1_PyGMT_GMT_comparison.ipynb`](Fig1_PyGMT_GMT_comparison.ipynb): Comparison of GMT CLI (Bash) and PyGMT (Python) scripts
 - [`Fig2_PyGMT_ecosystem.ipynb`](Fig2_PyGMT_ecosystem.ipynb): The PyGMT ecosystem
@@ -18,8 +18,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 - [`Fig4_PyGMT_pandas.ipynb`](Fig4_PyGMT_pandas.ipynb): Seismicity along the Andaman-Sumatra-Java subduction zone
 - [`Fig5_PyGMT_xarray.ipynb`](Fig5_PyGMT_xarray.ipynb): Hemispherical views of long-wavelength Mars topography
 - [`Fig6_PyGMT_geopandas.ipynb`](Fig6_PyGMT_geopandas.ipynb): Choropleth map of the population in the US
-- [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb): GitHub star history of GMT and the wrappers
-- `star_history_github_*.csv`: Cached GitHub stars data used by Figure 7
+- [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb) with `star_history_github_*.csv`: GitHub star history of GMT and the wrappers
 
 ![](pygmt_paper_figures_overview_github.png)
 
