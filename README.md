@@ -20,7 +20,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 - [`Fig6_PyGMT_geopandas.ipynb`](Fig6_PyGMT_geopandas.ipynb): Choropleth map of the population in the US
 - [`Fig7_PyGMT_datetime.ipynb`](Fig7_PyGMT_datetime.ipynb) with `star_history_github_*.csv`: GitHub star history of GMT and the wrappers
 
-![](pygmt_paper_figures_overview_github.png)
+![](figures_overview.png)
 
 
 ## Environment setup
