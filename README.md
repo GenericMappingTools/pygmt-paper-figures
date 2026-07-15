@@ -7,7 +7,7 @@ This repository contains the Jupyter notebooks and supporting data used to gener
 
 > Tian, D., Fröhlich, Y., Leong, W. J., Grund, M., Schlitzer, W., Jones, M., Uieda, L., Luis, J. M. F. (2026).
 > PyGMT: Bridging Python and the Generic Mapping Tools for Geospatial Visualization and Analysis.
-> *Geochemistry, Geophysics, Geosystems*, 27, e2026GC013105. https://doi.org/10.1029/2026GC013105
+> *Geochemistry, Geophysics, Geosystems*, 27(7), e2026GC013105. https://doi.org/10.1029/2026GC013105
 
 
 ## Notebooks
